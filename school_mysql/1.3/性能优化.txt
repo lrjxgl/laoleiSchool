@@ -1,0 +1,89 @@
+老雷PHP全栈开发教程之mysql查询索引优化
+索引优化查询是必学的
+推荐图书 《高性能mysql第3版》
+1.explain
+	explain select * from sky_article where id>10 AND id<100 order by id desc
+	explain select * from sky_district force index(upid)  order by upid desc ; 
+	---------------------------------
+			id：1
+	select_type:SIMPLE 简单查询
+		  table:null 查询的表
+		   type: 显示连接使用了何种类型 由最差到最好
+				All、index、range、ref、eq_ref、const
+  possible_keys:	可能使用的列
+			key:决定采用哪个key
+		key_len:索引的字节数
+			ref:显示索引的列
+			rows:1 扫描行数
+			extra:返回索引列的描述 越来越差
+				using index  where temporary filesort
+		  
+	
+	------------------------------------
+2.索引优化
+	为什么要用索引
+		1.索引减少了扫描行数
+		2.避免排序和临时表
+		3.将随机io变为顺序io
+	索引策略
+		
+		独立的列 catid
+		多列索引 id catid orderindex
+		索引顺序 规则：从左往右 最左前缀 where id=1  order by orderindex
+		覆盖索引 选择的列都是在索引中 select id catid orderindex from table 
+		使用索引扫描来做排序 索引的列选择 尽可能在where又在order
+
+	 
+	高区分的列 id catid orderindex
+	最多查询 应用中频繁用到的查询 catid gid orderindex 或者 catid status 
+	gender age 地区 status  //lasttime  频繁更新的索引 
+	
+3.查询优化
+	1.减少从服务器获取额外数据
+		select * from sky_article 在列表页中不使用*
+		select id,catid,title,description from sky_article
+	2.使用覆盖索引查询
+	
+	3.简单查询优化	
+		select id,catid,title,description from sky_article where id in(1,2,10) order by catid desc
+		切分查询操作
+			delete from sky_article limit 10000
+			select * from sky_article  limit 100;
+			select * from sky_article  limit 1000000,100 order by id desc ;
+			
+			select * from sky_article id<max(id) limit 1
+	4.重构查询方式
+		尽可能让索引生效 减少数据库扫描行数
+		一个复杂查询还是多个简单的查询
+			left join  一条语句 实现 文章+蚊子分类
+		
+		分解关联查询
+			select * from tag
+				join tag_post on tag_post.tagid=tag.id
+				join post on tag_post.tagid=post.id
+			where tag.tag='mysql'	
+		关联子查询优化
+			select id,title from sky_post where  id in(select id from tag_post where tagdid=1)
+			select id from tag_post where tagdid=1
+			select id,title from sky_post where  id in(ids) 
+		union 的限制
+			select id from tag_post where tagdid=1
+			limit 20
+			union 
+			select id from tag_post where tagdid=2
+			limit 20
+			limit 10
+		特定类型优化	
+			count(*) count(1)
+			group by catid 和 distinct(catid)
+			limit 
+			
+	
+			
+课后练习：
+		添加一个表 id age status  gender areaid createtime updatetime nickname grade 
+		
+		根据我们需要的查询去建立索引，我们随机输入30万条数据 推荐在虚拟机 2g内存
+		比如： 根据性别 年龄 状态 地区 评分 来筛选用户。 
+		
+		

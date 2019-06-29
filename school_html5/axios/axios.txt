@@ -1,0 +1,68 @@
+老雷PHP全栈开发教程之必备插件axios
+我们经常使用jquery来实现ajax。但是我们现在用上vue了，jquery显得太笨重了。
+我们只需要它的ajax功能，所以我们找来axios替换。
+vue+axios
+axios在ie浏览器是支持不是很好。
+我们通常在移动端使用它。
+
+https://github.com/axios/axios
+
+get
+	axios({
+		url: 'data.json',
+		data: {
+			firstName: 'Fred',
+			lastName: 'Flintstone'
+		}
+	})
+	.then(function(res) {
+		console.log(res.data.data.title);
+	})
+	.catch(function(error) {
+		console.log(error);
+	})
+	.finally(function() {
+
+	});
+post
+	axios({
+		method: 'post',
+		url: '/school_php/api.php',
+		data: {
+			firstName: 'Fred',
+			lastName: 'Flintstone'
+		},
+		headers: {
+			'content-type': 'application/x-www-form-urlencoded'
+		},
+	})
+	.then(function(res) {
+		console.log(res.data);
+	})
+	.catch(function(error) {
+		console.log(error);
+	});
+文件上传
+	function upload(){
+		console.log("wia")
+		var file=document.getElementById("upfile");
+		var upfile=file.files[0]
+		var form=new FormData();
+		form.append("upfile",upfile,upfile.name);
+		form.append("title","文件上传");
+		axios({
+			method: 'post',
+			url: 'upload.php',
+			data: form,
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			},
+		})
+		.then(function(res) {
+			document.getElementById("res").src=res.data.filename;
+		})
+	}
+	
+	//课后练习
+	大家去实现一遍 get post 文件上传
+	github 的axios手册看一遍

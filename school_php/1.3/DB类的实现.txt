@@ -1,0 +1,35 @@
+#老雷PHP全栈开发教程#跟着老雷学PHP，带你快速成为合格的phper
+
+今天我们来学习下mysql处理DB类的实现，本章我么主要来实践函数跟类的使用。
+知识点请翻阅php手册
+1.语言参考 > 函数
+	自定义函数
+		function add($a,$b){
+			$str=$a+$b;
+			return $str;
+		}
+2.语言参考 > 类与对象
+	控制访问 
+		public（公有） 可访问 可继承
+		protected（受保护） 不可访问  可继承
+		private（私有） 不可访问 不可继承
+	__construct extends __destruct 
+3.函数参考 > 数据库扩展 > 针对各数据库系统对应的扩展 > mysql > mysqli
+	connect
+	close
+	query
+	fetch_row
+	fetch_all
+	fetch_assoc
+	stmt
+4.sql的一些注入问题
+	单引号转化 real_escape_string 所有输入都要过滤
+	sql预处理 stmt
+			prepare
+			bind_param
+			execute
+			mysqli_stmt_get_result
+
+
+课后：完善DB类，以后作为MVC框架的model使用
+QQ:362606856

@@ -1,0 +1,50 @@
+老雷PHP全栈开发教程之文件系统相关
+这节课我们主要学习文件操作相关，比如文件夹创建、权限修改、文件上传、复制等。
+
+1.文件夹
+getcwd — 取得当前工作目录
+chdir — 改变目录
+opendir — 打开目录句柄
+readdir — 从目录句柄中读取条目
+closedir — 关闭目录句柄
+scandir — 列出指定路径中的文件和目录
+2.文件
+basename — 返回路径中的文件名部分
+chmod — 改变文件权限
+copy — 拷贝文件
+dirname — 返回路径中的目录部分
+
+file_exists — 检查文件或目录是否存在
+file_get_contents — 将整个文件读入一个字符串
+file_put_contents — 将一个字符串写入文件
+filesize — 取得文件大小
+fopen — 打开文件或者 URL
+fread — 读取文件
+fwrite — 写入文件
+fclose — 关闭一个已打开的文件指针
+glob — 寻找与模式匹配的文件路径
+is_dir — 判断给定文件名是否是一个目录
+is_readable — 判断给定文件名是否可读
+is_executable — 判断给定文件名是否可执行
+is_writable — 判断给定的文件名是否可写
+
+is_uploaded_file — 判断文件是否是通过 HTTP POST 上传的
+move_uploaded_file — 将上传的文件移动到新位置
+
+mkdir — 新建目录
+rename — 重命名一个文件或目录
+rmdir — 删除目录
+unlink — 删除文件
+
+4.fileinfo 查找文件内容类型以及编码
+上传文件注意 1.判断后缀 2.mine值
+finfo_open
+finfo_file
+finfo_close
+
+
+//课后练习
+1.列出当前目录及子目录下的所有文件，保存到数组
+
+2.文件上传的实现，限制只能上传图片(jpg png gif) 类文件
+

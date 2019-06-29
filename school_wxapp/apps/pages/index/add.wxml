@@ -1,0 +1,12 @@
+<!--pages/index/add.wxml-->
+<view>
+  <form>
+    <view>
+      <input type='text' name="title"> </input>
+    </view>
+    <view>
+        <textarea name="content"></textarea>
+    </view>
+    <button form-type='submit'>保存</button>
+  </form>
+</view>

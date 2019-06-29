@@ -1,0 +1,9 @@
+<view bindtap="onTap" data-id="{{item.id}}" class="list-item" wx:for="{{listItems}}" wx:for-item="item" wx:key="{{item.id}}">
+      <view class="list-item-side">
+        <image class="list-item-img" src="{{item.imgurl}}"></image>
+      </view>
+      <view class="list-item-main">
+          <view class="list-item-title">{{item.title}}</view>
+          <view class="list-item-desc">{{item.description}}</view>
+      </view>
+    </view>

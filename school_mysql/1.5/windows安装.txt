@@ -1,0 +1,31 @@
+window下安装GO，从官方下载msi一步步安装就可以了
+
+window下安装kingshard,把下载好的kingshard放到go的安装目录下，kingshard存放的路径格式：D:\Go\src\github.com\flike\kingshard (我的GO是安装在D盘)
+
+编译生成kingshard.exe:
+
+先cd到D:\Go\src\github.com\flike\kingshard
+
+go build -o bin/kingshard.exe ./cmd/kingshard
+
+执行完上面的指令后，会在bin目录下生成kingshard.exe
+
+把生成的kingshard.exe与配置文件etc\unshard.yaml 拷到D:\kingshard目录下
+
+修改配置文件unshard.yaml(请参照官方文档修改)
+
+运行：
+
+cd d:\kingshard
+
+kingshard.exe -config=unshard.yaml
+
+GO程序注册为WINDOWS服务
+
+nssm下载地址：http://nssm.cc/
+
+把nssm.exe放到：C:\Windows\System32
+
+使用nssm让kingshard以服务形式运行:
+
+nssm install kingshard #执行完该命令后会弹出设置窗口，非常容易配置

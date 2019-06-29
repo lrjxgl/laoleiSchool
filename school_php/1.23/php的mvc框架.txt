@@ -1,0 +1,58 @@
+老雷PHP全栈开发教程之php的mvc框架原理及常见框架学习
+现在大部分公司开发都会基于一些成熟的开源框架，比如Laravel、ThinkPHP、Codelgniter、yii、yaf。市面上开源框架有几十种，
+如何快速学习框架？现在大部分框架都是基于mvc模式，所以了解MVC框架原理,可以快速入手应用开发。
+
+一、mvc框架是什么？
+
+MVC全名是Model View Controller，是模型(model)－视图(view)－控制器(controller)的缩写，一种软件设计典范，
+用一种业务逻辑、数据、界面显示分离的方法组织代码，将业务逻辑聚集到一个部件里面，
+在改进和个性化定制界面及用户交互的同时，不需要重新编写业务逻辑。
+<?php
+	//控制器
+	
+	$a="index";
+	if($a=='index'){
+		require "model.php";
+	}else if($a=="show"){
+		require "model.php";
+	}
+	
+	 
+	require "view.php";
+?>
+二、mvc框架的简易实现
+	MVC
+		model.php
+		view.php
+		control.php
+		db.php
+	app
+		control
+		model
+		view
+	index.php
+	
+	
+三、我们怎么去快速学习一个框架
+	1.下载安装框架
+	2.查看目录结构
+	3.配置
+	4.控制器  使用模板 使用模型 
+	5.模板视图 foreach  if  $title include
+	6.模型 找出curd的方法 一般跟数据库操作有关系  
+	7.路由url 链接跳转a  php端跳转 header
+	9.http请求 知道get post值
+	10.实现一个简单的curd功能
+四、thinkPHP
+	https://www.kancloud.cn/manual/thinkphp5/118003
+	
+五、CI框架
+	http://codeigniter.org.cn/
+六、laravel	
+	https://laravelacademy.org/laravel-docs-5_8
+	
+课后作业
+	一、学会写一个简单的mvc框架,可以借鉴其他的优秀框架，函数。
+	二、学会yii的基本使用构建一个文章列表\详情\添加.	
+	三、找一个自己喜欢的框架，深入学习，推荐Laravel或者ThinkPHP5。
+	

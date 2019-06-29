@@ -1,0 +1,6 @@
+老雷PHP全栈开发教程之网络功能
+	
+	1.file_get_contents
+	2.curl
+	3.fsocket
+	

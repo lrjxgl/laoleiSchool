@@ -1,0 +1,55 @@
+老雷PHP全栈开发教程之深入理解Vue组件
+
+1.组件注册
+	组件命名 
+		kebab-case (短横线分隔命名) list-cell
+		PascalCase (首字母大写命名) ListCell
+	全局注册
+		Vue.component('list-cell', {
+		  // ... 选项 ...
+		})
+		Vue.component('ListCell', {
+		  // ... 选项 ...
+		})
+	局部注册
+		var ComponentA = { /* ... */ }
+		var ComponentB = { /* ... */ }
+		var ComponentC = { /* ... */ }
+		new Vue({
+		  el: '#app',
+		  components: {
+			'component-a': ComponentA,
+			'component-b': ComponentB
+		  }
+		})
+2.Prop
+	Prop 是你可以在组件上注册的一些自定义特性。当一个值传递给一个 prop 特性的时候，它就变成了那个组件实例的一个属性。
+	Prop用来实现由页面传给组件数据,props数据不可更改
+	命名  camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名
+	类型 数字 布尔 字符串 数组 对象
+	
+3.自定义事件
+	事件命名 采用 kebab-case (短横线分隔命名) 命名
+	<my-component v-on:call-parent="doSomething"></my-component>
+	<div @click="$emit('call-parent','组件中的事件')"></div>
+
+4.插槽<slot></slot>
+	<list-cell >slot中的内容</list-cell>
+	组件
+	<div>
+		<div>{{isGoods}}</div>
+		<div @click="$emit('call-parent',item)" v-for="(item,index) in items" :key="index">{{item}}</div>
+		<slot></slot>
+		 
+	</div>
+5.动态组件
+	实现在不同组件之间进行动态切换
+	<component v-bind:is="currentTabComponent"></component>
+
+课后练习
+	去写一个单页面的手机端企业网站
+	home
+	资讯
+	简介
+	联系方式
+	

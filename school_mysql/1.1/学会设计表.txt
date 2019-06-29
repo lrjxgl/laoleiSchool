@@ -1,0 +1,59 @@
+#老雷PHP全栈开发教程#
+这节课教大家学会设计mysql表。
+
+//表定义
+CREATE TABLE `test` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(32) NOT NULL DEFAULT '' COMMENT '标题',
+  `catid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分类',
+  PRIMARY KEY (`id`),
+  KEY `catid` (`catid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='测试';
+
+一、存储引擎
+InnoDB 优先考虑
+	更安全 支持事务和行级锁 处理大数据的时候更有优势
+MyISAM
+	支持表级锁 对于读多写少的小型网站更合适
+	
+二、列类型
+1.数值类型
+整型 TINYINT 、SMALLINT 、MEDIUMINT、INT、BIGINT
+定点 DECIMAL(5,2) 高精度 
+符点 FLOAT(7,4) 
+数值类型 unsigned 无符号>0
+
+2、日期和时间类型
+DATETIME '1983-09-05 13:28:00'  到9999
+TIMESTAMP '1983-09-05 13:28:00' 1970或晚于2037
+DATE '1983-09-05' 
+
+3、string类型
+CHAR 长度可以为从0到255的任何值
+VARCHAR 0到65,535
+TEXT 2的16次方
+MEDIUMTEXT  2的24
+
+三、表定义sql
+CREATE DATABASE  if not exists test_php default charset=utf8mb4;
+drop database test_php;
+CREATE TABLE `test` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(32) NOT NULL DEFAULT '' COMMENT '标题',
+  `catid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分类',
+  PRIMARY KEY (`id`),
+  KEY `catid` (`catid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='测试';
+alter table 
+	add column `catid` smallint unsigned NOT NULL DEFAULT '0' COMMENT '分类';
+	modify column `catid` int unsigned NOT NULL DEFAULT '0' COMMENT '分类';
+	change `catid` `catid2` int unsigned NOT NULL DEFAULT '0' COMMENT '分类';
+	
+	add index catid_id(catid,id)
+	drop index catid;
+drop table;
+
+课后练习：
+	文章的表
+		文章ID 文章名称 文章分类 文章内容 文章简介 作者 发布日期 文章状态 查看人数 
+		索引 蚊子分类 

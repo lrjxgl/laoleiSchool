@@ -1,0 +1,89 @@
+老雷PHP全栈开发教程之微信小程序表单及登录支付
+
+评论功能涉及到用户登录状态，所以我们需要做一个用户登录功能，给服务端发送的请求包含登录信息。
+	主要功能
+		用户登录
+		表单组件
+		打赏 微信支付
+1.用户登录
+	wx.getSetting 获取用户的当前设置。返回值中只会出现小程序已经向用户请求过的权限。
+	wx.getUserInfo 获取用户信息。
+		wx.getSetting({
+		  success (res){
+			if (res.authSetting['scope.userInfo']) {
+			  // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+			  wx.getUserInfo({
+				success: function(res) {
+				  console.log(res.userInfo)
+				}
+			  })
+			}
+		  }
+		})
+	<button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>	
+		bindGetUserInfo: function(e) {
+		 
+			console.log(e.detail.userInfo)
+			console.log(e.detail.rawData)
+		  },
+	
+	wx.login 
+		调用接口获取登录凭证（code）。
+		getUserInfo({
+			success:function(u){
+				wx.login({
+					success:function(e){
+						post({
+							url:"login",
+							data:{
+								code:e.code,
+								nickname:res.userInfo.username
+							},
+							success:function(res){
+								res.access_token //服务端登录识别串
+								//wx.setStorageSync("access_token",access_token);
+							}
+						})
+					}
+				})
+			}
+		});	
+		
+	auth.code2Session	
+		登录凭证校验。通过 wx.login 接口获得临时登录凭证 code 后传到开发者服务器调用此接口完成登录流程
+	access_token
+		携带登录识别串
+	wx.showToast 
+	 wx.hideToast
+2.表单组件
+	form
+	input
+	textarea
+	button
+	登录/注册表单
+	评论表单
+	
+ 
+
+3.打赏功能微信支付
+	wx.requestPayment
+	requestPay({
+		url:payConfig.php,
+		data:{
+			openid,userid,money
+		},
+		success:function(res){
+			wx.requestPayment({
+			  timeStamp: '',
+			  nonceStr: '',
+			  package: '',
+			  signType: 'MD5',
+			  paySign: '',
+			  success (res) { },
+			  fail (res) { }
+			})
+		}
+	})
+
+课后练习：
+完成登录评论的功能

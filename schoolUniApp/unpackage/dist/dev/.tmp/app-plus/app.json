@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/saveimg",
+    "pages/index/index",
+    "pages/2/index"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {},
+  "splashscreen": {
+    "autoclose": true
+  },
+  "appname": "schoolUniApp"
+}

@@ -1,0 +1,29 @@
+老雷PHP全栈开发教程之uniapp介绍及开发环境安装
+官网：https://uniapp.dcloud.io/
+1.uniApp干什么的？
+	uni-app 是一个使用 Vue.js 开发跨平台应用的前端框架，开发者编写一套代码，可编译到iOS、Android、H5、小程序等多个平台。
+	
+	
+2.uniApp的框架
+	采用Vue.js前端框架+微信小程序为主的组件以及api
+	对于不了解vue的，大家要先去看vue教程，这边不讲vue语法。
+	另外也推荐大家去看小程序开发教程,uniApp采用的是小程序的组件跟api。
+3.相关知识
+	微信小程序 https://developers.weixin.qq.com/miniprogram/dev/index.html?t=19012115
+	vue https://cn.vuejs.org/v2/guide/index.html
+	html5plus http://www.html5plus.org/doc/h5p.html
+4.安装开发环境
+	安装HBuilderX  http://www.dcloud.io/hbuilderx.html
+	安装微信开发者工具 https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html
+5.hello uniApp
+	创建uniapp
+	运行h5
+	运行小程序
+	运行app
+6.打包
+
+课后练习
+	安装hbx
+	安装微信开发者工具
+	运行项目 h5
+	运行项目 微信小程序

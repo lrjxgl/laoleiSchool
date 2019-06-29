@@ -1,0 +1,32 @@
+老雷PHP全栈开发教程必知必会之PHP缓存的使用
+缓存的作用就是减少对数据的处理，增加网站的性能。适用于非实时需求的数据。
+
+爱奇艺申诉
+
+一、页面缓存
+	新闻类的 很少会更新的内容
+	将整个页面缓存起来 html静态页
+	ob_start();
+	ob_get_contents 
+	ob_end_clean();
+二、数据缓存 php中
+	局部的缓存 不经常变得数据 
+	缓存结构 key value expire
+	使用文件存储缓存
+	使用数据库存储缓存
+		cache表  k v expire  
+	使用内存软件存储缓存
+	memcache
+		memcache
+		memcached 更丰富
+	redis 必学的
+		phpredis c扩展
+		Predis   php扩展
+三、代码编译缓存 
+	将php编译后的代码缓存
+	opcache
+
+课后练习
+	使用mysql存储缓存，实现一个缓存类
+	安装memcache及扩展
+	安装redis 及phpredis扩展

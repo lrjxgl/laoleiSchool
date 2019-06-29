@@ -1,0 +1,118 @@
+<h3>认识jQuery-老雷php全栈开发教程</h3>
+#老雷PHP全栈开发教程#跟着老雷学习php全栈开发，三个月让你从小白成为一个合格的phper.
+<div>参考手册 http://www.runoob.com/jquery/jquery-tutorial.html</div>
+<div>jQuery 是一个 JavaScript 库，jQuery 极大地简化了 JavaScript 编程，我们常用jQuery来处理Dom\事件\动画\AJAX
+</div>
+<h3>
+	jQuery Dom处理
+</h3>
+<div>
+	<h4>选择器</h4>
+	<div>选择器大家需要深入了解</div>
+	<pre>
+	$("div")
+	$(".class")
+	$(".class child"); <div class="class"><div class="child"></div> </div>
+	$("#id")
+	$("div.class") 同级选择器
+	$("[href]") 选取所有带有 href 属性的元素。
+	<a href="">a</a>
+
+	$("[href='#']") 选取所有带有 href 值等于 "#" 的元素。
+
+	$("[href!='#']") 选取所有带有 href 值不等于 "#" 的元素。
+
+	$("[href$='.jpg']") 选取所有 href 值以 ".jpg" 结尾的元素。
+</pre>
+</div>
+<h3>jQuery 事件</h3>
+<div>
+	click dbclick mouseenter mouseleave keyup keydown
+</div>
+<pre>
+	//针对已创建元素
+	$(".class").on("click",function(){
+		console.log($(this).html());
+	})
+	//可针对动态创建数据
+	$(document).on("click",".class",function(){
+		console.log($(this).html());
+	})
+</pre>
+<h3>Dom操作</div>
+	<pre>
+	var el=$(".class");
+	处理内容 
+		el.val(); el.html(); el.text();
+	增加处理元素 
+		append() - 在被选元素的结尾插入内容
+		prepend() - 在被选元素的开头插入内容
+		after() - 在被选元素之后插入内容
+		before() - 在被选元素之前插入内容
+	删除元素
+		remove() - 删除被选元素（及其子元素）
+		empty() - 从被选元素中删除子元素 <div>asdasd</div> <div></div>
+	处理class
+		addClass() $("div").addClass("b") - 向被选元素添加一个或多个类 <div class="a"></div> 
+		removeClass() - 从被选元素删除一个或多个类
+		toggleClass() - 对被选元素进行添加/删除类的切换操作 $("div").toggleClass("b")
+	处理css
+		el.css("background-color","yellow");
+		el.css({"background-color":"yellow","font-size":"200%"});
+</pre>
+	<h3>动画效果</h3>
+	<div>在移动端应该使用css代替js动画</div>
+	<div>
+		el.show(1000); display:block;flex;
+		el.hide(); display:none;
+		$(selector).animate({params},speed,callback);
+		$("div").animate({
+		left:'250px',
+		opacity:'0.5',
+		height:'150px',
+		width:'150px'
+		});
+	</div>
+	<h3>jQuery遍历</h3>
+	<div>
+		$("#el").parents(".parents");<br /><div class="parents"><div id="el"></div></div>
+		$("#el").find("span");<br/><div id="el"><span></span></div>
+		$("#el").siblings();<br>
+		<div id="el">
+			<div>a</div>
+			<div>b</div>
+		</div>
+		Tabs
+		$("#el").eq(1) 方法返回被选元素中带有指定索引号的元素。
+	</div>
+	<h3>
+		jQuery AJAX
+	</h3>
+	<div>什么是AJAX？ajax是在不刷新页面的情况下，与服务器发生数据交换的技术</div>
+	<pre>
+	$.get(url,function(res){
+		
+	},"json")
+	$.post(url,data,function(res){
+		
+	},"json");
+	$.post(url,$("form").serialize(),function(res){
+		
+	},"json");
+	
+	$.ajax({
+		url:url,
+		type:"GET",
+		data:{
+			"action":"add"
+		}
+		dataType:"json",
+		success:function(res){
+			
+		}
+	})
+</pre>
+
+课后作业：
+post请求 form表单
+

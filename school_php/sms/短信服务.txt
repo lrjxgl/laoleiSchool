@@ -1,0 +1,53 @@
+老雷PHP全栈开发教程之php短信服务
+
+应用场景
+	用户注册登录
+	用户信息认证
+	消息通知
+	sendSms($telphone,$content，$template);
+	http接口
+使用短信验证码逻辑实现
+	输入号码
+		获取短信验证码
+		判断是否发送验证码
+			是 发送
+			否 发送错误信息
+	认证验证码
+	get/sendSms
+		
+		check判断
+			1.判断手机号是否正确
+			2.判断该手机号是否拉黑了
+			3.判断手机号是否已经刚刚发送了
+			
+		if(check($tel)){
+			//符合要求
+			
+			$yzm=1243;
+			sendSms($tel,"您的验证码：1234")；
+			//保存验证码
+			$_SESSION["telyzm"]=$yzm;
+			//缓存 全平台
+			$key="telyzm".$tel;
+			cache()->set($key,$yzm,$expire=300);
+			//短信防刷
+			cache()->set("smsSendTime".$tel,time(),60);
+			cache()->set("smsRegTime".$tel,time(),60);
+			
+		}else{
+			echo "发送错误";
+		}	
+	post smsCode
+		$code=1234;
+		$tel=12345;
+		$key="telyzm".$tel;
+		$value=cache()->get($key);
+		if($value){
+			//验证码通过
+			执行业务
+		}else{
+			echo "验证码不通过";
+		}
+
+课后练习
+	实现短信注册、短信登录

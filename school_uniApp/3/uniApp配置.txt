@@ -1,0 +1,17 @@
+老雷PHP全栈开发教程之uniAPP配置及实现文章列表详情
+https://uniapp.dcloud.io/collocation/pages?id=navigationbarshadow
+pages.json配置
+	globalStyle
+	pages
+	tabBar
+	condition 启动模式配置，仅开发期间生效，用于模拟直达页面的场景，如：小程序转发后，用户点击所打开的页面
+	subPackages 推荐分包模式
+route
+	组件navigator
+	api navgateTo
+request 网络请求
+
+common.js 公用文件
+
+课后练习
+	完善列表页跟详情页

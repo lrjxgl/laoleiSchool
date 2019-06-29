@@ -1,0 +1,8 @@
+#老雷PHP全栈开发教程#跟着老雷学PHP，快速成为合格的PHPer.
+今天我们来学习下php处理excel文件，之前常用的excel处理类是PHPExcel，目前该类库已经停更，官方出了新版的PhpSpreadsheet。
+所以我们用PhpSpreadsheet来实现我们要的功能。
+一般我们对于excel就两个功能：读取excel文件传入数据库和从数据库读取数据导入文件。
+这边我们只操作数组， 数组<=>excel。
+
+安装
+composer require phpoffice/phpspreadsheet

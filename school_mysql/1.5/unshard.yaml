@@ -1,0 +1,107 @@
+# server listen addr
+addr : 0.0.0.0:9696
+
+# server user and password
+user :  kingServer
+password : kingshard
+
+# the web api server
+web_addr : 0.0.0.0:9797
+#HTTP Basic Auth
+web_user : admin
+web_password : admin
+
+# if set log_path, the sql log will write into log_path/sql.log,the system log
+# will write into log_path/sys.log
+#log_path : /Users/flike/log
+
+# log level[debug|info|warn|error],default error
+log_level : debug
+
+# if set log_sql(on|off) off,the sql log will not output
+#log_sql: off
+
+# only log the query that take more than slow_log_time ms
+#slow_log_time : 100
+
+# blacklist sql file path
+# all these sqls in this file will been forbidden by kingshard
+#blacklist_sql_file: /Users/flike/blacklist
+
+# only allow this ip list ip to connect kingshard
+#allow_ips: 127.0.0.1
+
+# the charset of kingshard, if you don't set this item
+# the default charset of kingshard is utf8.
+#proxy_charset: gbk
+
+# node is an agenda for real remote mysql server.
+nodes :
+-
+    name : node1
+
+    # default max conns for mysql server
+    max_conns_limit : 32
+
+    # all mysql in a node must have the same user and password
+    user :  kingshard
+    password : kingshard
+
+    # master represents a real mysql master server
+    master : 127.0.0.1:3306
+
+    # slave represents a real mysql salve server,and the number after '@' is
+    # read load weight of this slave.
+    slave : 127.0.0.1:3308@3,127.0.0.1:3309@2
+    down_after_noalive : 32
+
+-
+    name : node2
+
+    # default max conns for mysql server
+    max_conns_limit : 32
+
+    # all mysql in a node must have the same user and password
+    user :  kingshard
+    password : kingshard
+
+    # master represents a real mysql master server
+    master : 127.0.0.1:3306
+    # slave represents a real mysql salve server,and the number after '@' is
+    # read load weight of this slave.
+    down_after_noalive : 32        
+
+# schema defines which db can be used by client and this db's sql will be executed in which nodes, 
+# the db is also the default database
+schema :
+    db : laoleiphp
+    nodes: [node1,node2]
+    default: node1
+    shard:
+    -
+        db : laoleiphp
+        table: sky_test_shard_hash
+        #分表字段
+        key: id
+        #分表分布的node
+        nodes: [node1, node2]
+        #分表类型
+        type: hash
+        #子表个数分布，表示node1有4个子表，
+        #node2有4个子表。
+        locations: [2,2]
+
+    - 
+        db : laoleiphp
+        table: sky_test_shard_range
+        #分表字段
+        key: id
+        type: range
+        #分表分布的node
+        nodes: [node1, node2]
+        #子表个数分布，表示node1有4个子表，
+        #node2有4个子表。
+        locations: [2,2]
+        #表示每个子表包含的最大记录数，也就是说每
+        #个子表最多包好10000条记录。即子表1对应的id为[0,10000),子表2[10000,20000)....
+        table_row_limit: 10000

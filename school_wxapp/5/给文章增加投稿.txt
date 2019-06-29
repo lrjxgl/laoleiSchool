@@ -1,0 +1,44 @@
+老雷PHP全栈开发教程之微信小程序文件上传下载拍照录音
+	我们要给用户提供信息发布功能,和文章图片保存及全屏预览功能
+	主要功能
+		拍照上传
+		音频上传
+		录音
+		录视频
+		选择图片上传
+		长按图片下载保存到相册
+		点击图集浏览大图
+	form 投稿内容
+		文章名称
+		文章内容 简单文本类textarea  富文本editor 
+		文章图片
+		文章视频
+		文章音频
+	下载
+		
+api
+	wx.chooseImage
+	wx.uploadFile
+	wx.downloadFile
+	wx.saveImageToPhotosAlbum
+	wx.saveVideoToPhotosAlbum
+	wx.saveFile 保存到本地
+	
+	wx.previewImage
+		urls
+	wx.chooseVideo
+	相机wx.createCameraContext()
+		CameraContext.takePhoto		
+		CameraContext.startRecord
+		CameraContext.stopRecord
+	录音
+		wx.getRecorderManager
+			.start
+			.stop
+	会话
+	wx.chooseMessageFile
+	
+
+课后练习
+	把上面列出的功能实现
+	

@@ -1,0 +1,5 @@
+
+<view wx:if="{{pageLoad}}">
+  <list-item a="aa" bind:myevent="onMyEvent"  aitems="{{articleList}}"></list-item>
+ 
+</view>

@@ -1,0 +1,22 @@
+#老雷php开发全栈教程#php开发环境安装
+
+学习网站开发的第一步，肯定是要先配置一下我们的代码的运行环境。在开始敲代码前，我们需要安装好php环境和开发工具。
+
+工具的使用官网都有，大家自己根据文档安装。
+
+php开发环境推荐
+
+	phpstudy8.x http://phpstudy.php.cn/download.html 
+	mysql管理工具  phpmyadmin navicat for mysql
+
+开发工具
+	
+	HBuilderX  这个是针对我们全栈学习使用的开发工具 http://www.dcloud.io/hbuilderx.html
+	notepad++
+
+虚拟机
+	oracle vm virtualBox
+	linux
+	
+课后
+	大家去安装phpstudy8.x,并且新建一个网站,用HBuilderX新建一个项目。 

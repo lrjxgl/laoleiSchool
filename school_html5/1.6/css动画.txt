@@ -1,0 +1,75 @@
+老雷PHP全栈开发教程之css动画
+	
+动画库 https://github.com/daneden/animate.css
+CSS动画
+	@keyframes animationname {keyframes-selector {css-styles;}}
+		keyframes-selector
+			0-100%
+			from（与 0% 相同）
+			to（与 100% 相同）
+	@keyframes bg{
+			from{
+				background: red;
+				width:50px;
+				height:50px;
+			}
+			20%{
+				width:200px;
+				height:200px;
+				transform: rotate(360deg);
+			}
+			40%{
+				width:80px;
+				height:120px;
+				 
+			}
+			to{
+				 background: yellow;
+			}
+	}
+	
+	animation-name:keyframes;	规定需要绑定到选择器的 keyframe 名称。。
+	animation-duration:2s;	规定完成动画所花费的时间，以秒或毫秒计。
+	animation-timing-function	规定动画的速度曲线。
+		linear 画从头到尾的速度是相同的。
+		ease 默认。动画以低速开始，然后加快，在结束前变慢。
+		ease-in 动画以低速开始。
+		ease-out 动画以低速结束。
+		ease-in-out  动画以低速开始和结束。
+		cubic-bezier(n,n,n,n) 在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。
+		
+	animation-delay:1s;	规定在动画开始之前的延迟。
+	animation-iteration-count: n|infinite;	规定动画应该播放的次数。
+		
+	animation-direction: normal|alternate;	规定是否应该轮流反向播放动画。
+
+Vue动画
+	v-enter
+	v-enter-active
+	v-enter-to
+	v-leave
+	v-leave-active
+	v-leave-to
+	<style>
+		.fade-enter-active, .fade-leave-active {
+		  transition: opacity .5s;
+		}
+		.fade-enter, .fade-leave-to {
+		  opacity: 0;
+		}
+	</style>
+	我们可以通过以下特性来自定义过渡类名：
+
+		enter-class
+		enter-active-class
+		enter-to-class (2.1.8+)
+		leave-class
+		leave-active-class
+		leave-to-class (2.1.8+)
+		
+		<transition
+			enter-active-class="animated tada"
+			leave-active-class="animated bounceOutRight"
+		>
+						 
+		</transition>

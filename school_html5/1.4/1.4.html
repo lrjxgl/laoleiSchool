@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>认识JavaScript-老雷php全栈开发教程</title>
+		<link href="" type="text/css" />
+		<style>
+			.pointer{
+				cursor: pointer;
+			}
+			#res{
+				color: red;
+			}
+		</style>
+		 
+		<script>
+			//http://www.w3school.com.cn/js/index.asp
+			var res;//变量 
+			//console.log(res);
+			//数据类型 字符串、数字、布尔、数组、对象、Null、Undefined
+			//函数
+			
+			/***运算符***/
+			/*
+			*比较运算符 1<2 2<=2 3>2 3>=3  1==1 1!=2
+			*算术运算符 + - * %  如：1+4=5
+			* 赋值运算符 =  += -= *= %= 如：x+=5;
+			* 字符串的 + 运算符 a=a+"字符串";
+			*/
+		   
+			//if 
+			 function funIf(){
+				 var i=document.querySelector("#title").value;
+				 if(i=="1"){
+					 res.innerHTML="1";
+				 }else if(i=="2"){
+					 res.innerHTML="2";
+				 }else{
+					 res.innerHTML="不知道";
+				 }
+				 
+			 }
+			 //switch
+			 function funSwitch(){
+				 var i=document.querySelector("#title").value;
+				 i=parseInt(i);
+				 switch(i){
+					 case 1:
+						res.innerHTML=1;
+						break;
+					case 2:
+							 res.innerHTML=2;
+						break;
+					default:
+							res.innerHTML="不知道";
+						break;
+				 }
+				 if(i<3){
+					 res.innerHTML+="比3小";
+				 }else{
+					  res.innerHTML+="比3大";
+				 }
+			 }
+			 function funFor(){
+				 for(var i=0;i<5;i++){
+					  res.innerHTML+=i;
+				 }
+			 }
+			 function funWhile(){
+				 i=0;
+				 var x="<br/>while";
+				 while (i<5)
+				 {
+					x=x + i ;
+					i++;
+				 }
+				 res.innerHTML+=x;
+				//do while 
+				i=0;
+				x="<br/>do while";
+				do
+				 {
+				  x=x +  i ;
+				  i++;
+				}
+				while (i<5); 
+				res.innerHTML+=x;
+				// break;
+				x="<br/>while break";
+				i=0;
+				while (i<5)
+				{
+					x=x +i ;
+					i++;
+					if(i==2) break;
+					 
+				}
+				res.innerHTML+=x;
+			 }
+			 
+			 function pageLoad(){
+			 	res=document.querySelector("#res");
+			 	document.querySelector("#load").innerHTML="pageLoad";
+			 }
+			 
+			  function msDown(){
+			 	 res.innerHTML="鼠标按下";
+			  }
+			   function msUp(){
+			  	res.innerHTML+="鼠标放开";
+			  }
+			  function msClick(){
+			  	 
+			  	res.innerHTML+="鼠标点击了";
+			  }
+			 function msEnter(){
+			 	res.innerHTML="鼠标进入";
+			 }
+			 function msLeave(){
+			 	res.innerHTML="鼠标离开";
+			 }
+			 function submitForm(e){
+			 	res.innerHTML="form submit";
+			 	return false;
+			 }
+			//Dom
+			/*
+			学习参考 http://www.w3school.com.cn/htmldom/index.asp
+			Dom选择
+			 document.querySelector("#id")
+			 document.querySelector(".class")
+			 document.querySelector("h3")
+			 jQuery
+			*/ 
+		</script>
+	</head>
+	<body onload="pageLoad()" >
+		<h3>认识JavaScript</h3>
+		<div id="load"></div>
+		<div style="margin-bottom: 20px; " onmousedown="msDown()" onmouseup="msUp()" onkeyup="" onclick="msClick()" onmouseenter="msEnter()" onmouseleave="msLeave()">
+			事件
+		</div>
+		<div id="res"></div>
+		<form onsubmit="return submitForm(event)">
+			<input type="text" name="title" id="title" />
+			<button type="submit">提交</button>
+			<button type="button" onclick="funIf()">IF</button>
+			<button type="button" onclick="funSwitch()">switch</button>
+			<button type="button" onclick="funFor()">for</button>
+			<button type="button" onclick="funWhile()">while</button>
+		</form>
+		<script>
+			//可多次叠加
+			document.querySelector("h3").addEventListener("click",function(){
+				res.innerHTML="h3 click"
+			},false)
+			 
+			//只执行一次
+			 
+			document.querySelector("h3").ondblclick=function(){
+				res.innerHTML="h3 双击 click"
+			}
+			 
+			 
+		</script>
+	</body>
+</html>

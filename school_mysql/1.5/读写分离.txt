@@ -1,0 +1,29 @@
+老雷PHP全栈开发教程之mysql读写分离
+
+数据库中间件
+	kingshard https://github.com/flike/kingshard
+	cetus 开源 https://github.com/cetus-tools/cetus
+	mycat http://www.mycat.io/
+	Gaea https://github.com/XiaoMi/Gaea
+	MaxScale MariaDB官方
+	MySQL Router  mysql官方
+	ProxySQL
+	DBProxy https://github.com/Meituan-Dianping/DBProxy
+	我们今天来学习使用kingshard
+	windows安装文档
+	https://github.com/flike/kingshard/wiki/%E5%9C%A8window%E4%B8%8B%E5%AE%89%E8%A3%85kingshard
+	下载1.5版本的 安装完成 配置
+	
+	//给所有的mysql服务器加上账户
+	grant all privileges on *.* to kingshard@% identified by 'kingshard';
+	flush privileges;
+	
+	配置unshard.yaml
+	
+	启动kindshard
+	kindshard.exe -config=unshard.yaml
+	
+ 课后练习	
+	搭kindshard
+	做一遍读写分离 跟 分表分库
+	

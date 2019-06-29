@@ -1,0 +1,97 @@
+#老雷php开发全栈教程#实战之即时通讯模块开发
+
+我们主要实现私聊和群聊两个功能,要在web端实现想微信QQ那样的即时通讯的功能，我们需要了解一下websocket。
+websocket是一种可以双向通讯的长连接协议，http是获取完数据就关闭，websocket则可以一直连接，就像铺了一条管道一样，水可以一直流着。
+一、websocket前端
+	var ws = new WebSocket("ws://127.0.0.1.com:8282");
+	ws.open=function(){
+		var msg = JSON.stringify({
+			type: "login",
+			content: "login"
+		});
+		ws.send(msg);
+	}
+	ws.onmessage = function (e){ 
+		console.log(e);
+		//服务器发送的内容
+		var res = JSON.parse(e.data);
+		switch(res.type){
+			case "login":
+				
+				break;
+			case "pm":
+				
+				break;
+			case "groupPm":
+				
+				break;
+				
+		}
+	}
+	ws.onerror=function (e){ 
+		console.log(e);
+	}
+	ws.onclose=function (e){ 
+		console.log(e);
+	}
+	
+二、websocket后端服务	
+	php开发socket服务，现在流行的框架有两个，swoole和workerman，swoole采用c写的扩展，workerman是由php写的一个库。我们采用基于workerman的GatewayWorker来实现我们的websocket服务。
+	GatewayWorker封装了我们私聊群聊所需要的常用功能，所以我们使用起来也很简单。
+	下载地址：https://www.workerman.net/
+	手册地址：http://doc2.workerman.net/
+	在GatewayWorker中我们只需要在Events.php编写我们的业务就可以了。
+	<?php
+use \GatewayWorker\Lib\Gateway;
+
+	class Events
+	{
+
+		/**用户连接**/
+		public static function onConnect($client_id)
+		{
+		   //Gateway::sendToCurrentClient("Your client_id is $client_id");
+		}
+		/**用户消息**/
+		public static function onMessage($client_id, $message)
+		{
+			$arr=json_decode($message,true);
+			if($arr["type"]=="login"){
+				return self::login($client_id,$arr);
+				 
+			}
+			// 发送给所有的客户
+			GateWay::sendToAll($message);
+			/*
+			
+			//发送给个人
+			Gateway::sendToClient($client_id, $message);
+			//发送给用户
+			Gateway::sendToUid($uid,$message);
+			//发送给群里的人
+			$gid="测试群";
+			Gateway::sendToGroup($gid,$message);
+			*/
+		}
+		/**认证**/
+		public static function login($client_id,$arr){
+			$message=json_encode($arr);
+			Gateway::sendToClient($client_id, $message);
+		}		
+		/**用户退出***/
+		public static function onClose($client_id)
+		{
+		   // 广播 xxx logout
+		  // GateWay::sendToAll("client[$client_id] logout\n");
+		}
+
+	}
+
+
+?>
+
+//后面我们会实现具体可用的即时消息功能
+	课后：
+		熟悉gatewayworker手册
+		后获取聊天室里面的所有用户
+		提示用户进入退出

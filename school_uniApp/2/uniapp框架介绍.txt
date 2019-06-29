@@ -1,0 +1,8 @@
+老雷PHP全栈开发教程之uniapp框架介绍
+https://uniapp.dcloud.io/frame?id=%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83
+采用Vue.js前端框架+微信小程序为主的组件以及api
+	对于不了解vue的，大家要先去看vue教程，这边不讲vue语法。
+	另外也推荐大家去看小程序开发教程,uniApp采用的是小程序的组件跟api
+课后练习
+	熟悉官网框架简介部分
+	

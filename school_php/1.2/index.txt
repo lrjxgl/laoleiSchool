@@ -1,0 +1,33 @@
+php+mysql-老雷PHP全栈开发教程
+php的curd 
+php届有个梗，做了8年php还只会curd，水平太次了。作为php开发者，经常跟curd打交道。
+这是最基础的内容
+
+mysql是最流行的开源数据库
+php+mysql是一对绝配
+php连接mysql可以使用mysqli 、pdo 、mysql。
+推荐大家使用mysqli。
+本教程也都是基于mysqli讲解的。
+教程参考：php手册 mysqli 
+/************
+//创建guest表
+CREATE TABLE `sky_guest` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT '' COMMENT '主题',
+  `userid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
+  `catid` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '类型',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '状态',
+  `telephone` varchar(15) NOT NULL,
+  `email` varchar(50) DEFAULT '0' COMMENT '邮箱',
+  `qq` varchar(15) NOT NULL DEFAULT '' COMMENT 'QQ',
+  `createtime` datetime NOT NULL DEFAULT '2019-01-17 08:08:01' COMMENT '留言时间',
+  `content` text COMMENT '留言内容',
+  `reply_content` text COMMENT '回复内容',
+  `reply_time` datetime NOT NULL DEFAULT '2019-01-17 08:08:01' COMMENT '回复时间',
+  `nickname` varchar(16) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `catid` (`catid`),
+  KEY `userid` (`userid`,`id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='留言板';
+
+*********/

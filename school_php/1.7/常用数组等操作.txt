@@ -1,0 +1,46 @@
+老雷PHP全栈开发教程之常用数组操作等
+
+1.数组
+	
+	array_diff — 计算数组的差集
+	array_merge — 合并一个或多个数组
+	array_intersect — 计算数组的交集
+	array_keys — 返回数组中部分的或所有的键名
+	array_map — 为数组的每个元素应用回调函数
+	array_multisort — 对多个数组或多维数组进行排序
+	array_pop — 弹出数组最后一个单元（出栈）
+	array_push — 将一个或多个单元压入数组的末尾
+	array_shift — 将数组开头的单元移出数组
+	array_unshift — 在数组开头插入一个或多个单元 
+	array_search — 在数组中搜索给定的值，如果成功则返回首个相应的键名 
+	array_slice — 从数组中取出一段
+	array_unique — 移除数组中重复的值
+	array — 新建一个数组 
+	arsort — 对数组进行逆向排序并保持索引关系 
+	asort — 对数组进行排序并保持索引关系
+	count — 计算数组中的单元数目，或对象中的属性个数
+	extract — 从数组中将变量导入到当前的符号表
+	in_array — 检查数组中是否存在某个值
+	krsort — 对数组按照键名逆向排序
+	ksort — 对数组按照键名排序
+	shuffle — 打乱数组
+	rsort — 对数组逆向排序
+	sort — 对数组排序
+	foreach
+2.json函数
+	json_decode — 对 JSON 格式的字符串进行解码
+	json_encode — 对变量进行 JSON 编码
+	serialize
+3.类/对象的信息
+	class_exists — 检查类是否已定义
+	method_exists — 检查类的方法是否存在
+	spl_autoload_register — 注册给定的函数作为 __autoload 的实现
+4.函数处理 函数
+	function_exists — 如果给定的函数已经被定义就返回 TRUE
+	 call_user_func — 把第一个参数作为回调函数调用
+	 call_user_func_array — 调用回调函数，并把一个数组参数作为回调函数的参数
+	
+
+课后练习：
+	spl_autoload_register 实现类的自动加载
+	把不理解的函数 在手册中找出来 并且运行它的例子

@@ -1,0 +1,30 @@
+@keyframes bg
+{
+from 
+{
+	background: red;
+	width:50px;
+	height:50px;
+	
+}
+20%{
+	width:200px;
+	height:200px;
+	transform: rotate(360deg);
+}
+to {background: yellow;}
+}
+.bg{
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	margin-left: -50px;
+	__animation: bg 2s;
+	animation-name:bg;
+	animation-duration:2s;
+	-webkit-animation-direction:alternate;
+	width: 100px;
+	height: 100px;
+	background-color: #eee;
+	
+}

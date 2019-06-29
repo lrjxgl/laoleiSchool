@@ -1,0 +1,40 @@
+老雷PHP全栈开发教程之vue-cli开发单页项目
+我们在安装vue之前，需要安装nodejs。
+没安装的先去安装 https://nodejs.org/zh-cn/ 下载长期支持版本
+vuecli手册 https://cli.vuejs.org/zh/guide/installation.html
+一、安装Vue
+npm install -g @vue/cli
+二、创建项目
+vue create hello
+cd hello
+vue add router
+vue add vuex
+npm run serve
+三、了解单文件组件
+	https://cn.vuejs.org/v2/guide/single-file-components.html
+四、了解Router
+	https://router.vuejs.org/zh/
+	router-link
+	 <router-link to="/foo">Go to Foo</router-link>
+	导航api
+	router.push("show?id=1")
+	router.replace("show?id=1");
+	返回
+	router.go(-1)
+五、安装插件
+	
+	vue add router
+	vue add vuex
+	安装axios
+	npm install axios
+	vue add axios  //pc jquery ajax
+	安装element
+	vue add element
+五、使用vue-ui框架
+	https://element.eleme.cn/#/zh-CN
+	https://iviewui.com/
+
+六、公用配置common.js
+	
+课后练习
+大家做一个文章列表跟详情页的

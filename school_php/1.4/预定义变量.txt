@@ -1,0 +1,18 @@
+#老雷PHP全栈开发教程#认识PHP的预定义变量
+
+$GLOBALS — 引用全局作用域中可用的全部变量
+$_SERVER 服务器
+$_GET  用户发送get请求
+$_POST 用法发送的post请求
+$_FILES 文件
+$_REQUEST 默认情况下包含了 $_GET，$_POST和 $_COOKIE 的数组。 
+$_ENV
+$_SESSION
+	session_start();
+	session_id — 获取/设置当前会话 ID
+	session_write_close — Write session data and end session
+	$_SESSION["k"]="value";	
+$_COOKIE
+setcookie ($name ,$value,$expire,$path, $domain,$secure,$httponly)
+
+

@@ -1,0 +1,96 @@
+#老雷PHP全栈开发教程#跟着老雷学php，快速成为合格的phper
+三十分钟带你学会常用sql的操作语句
+《SQL 参考手册》中文版 .chm 
+1.curd
+insert table set a=1,b='daad'
+update table set a=3,b='阿达' where id=3
+delete from table where id=3
+SELECT fields
+    FROM table
+    [WHERE...]
+    ]
+[GROUP BY...]
+    ]
+[HAVING...]
+    ]
+[ORDER BY...]
+    ]
+
+2.常用的查询
+select * from table where id=1;
+select * from table where order by id DESC limit 1,24;
+select id,title from table where status=1 order by id DESC,status ASC limit 10,24;
+ 
+3.where 条件运算符
+	=	等于
+	!= 不等于 
+	<>	不等于
+	
+	> 大于 id>3
+	< 小于
+	>= 大于等于
+	<= 小于等于
+	BETWEEN 在某个范围内 between 1 and 3
+	LIKE 搜索某种模式 模糊匹配 title like '%中国%'  '中国%' '%中国'  
+	IN 指定针对某个列的多个可能值 in(1,2,3)
+4.常用函数
+	COUNT() - 返回行数 
+	AVG() - 返回平均值 
+	 MAX() - 返回最大值
+	 MIN() - 返回最小值
+	 SUM() - 返回总和
+	DISTINCT - 返回不重复的
+	select count(*) from table ;//返回记录数
+	select sum(money) as money from table ;//返回综合
+	select distinct(title) from table ;//返回不重复的数据
+5.group by  having 分组语句
+
+select sum(money) as total_money from table as t  group by userid having sum(money)>1000 order by total_money DESC ;
+
+where 和 having 的区别
+	  HAVING子句可以引用总计函数，而WHERE子句不能引用
+
+4.LEFT JOIN 和 RIGHT JOIN 运算
+	用 LEFT JOIN 运算 创建左边外部联接.左边外部联接将包含了从第一个（左边）开始的两个表中的全部记录，即使在第二个（右边）表中并没有相符值的记录。
+	用RIGHT JOIN 运算 创建 右边外部联接.右边外部联接将包含了从第二个（右边）开始的两个表中的全部记录，即使在第一个（左边）表中并没有匹配值的记录。
+	SELECT a.CategoryName,
+	b.ProductName,a.CategoryID
+	FROM Categories as a LEFT JOIN Products as b
+	ON Categories.CategoryID = Products.CategoryID;
+	选出所有分类 即使 该分类没有产品
+	SELECT a.CategoryName,
+	b.ProductName,a.CategoryID
+	FROM Products as b LEFT JOIN Categories as a
+	ON Categories.CategoryID = Products.CategoryID;
+	选出所有产品 即使 该产品没有分类
+5.union语法
+	创建一个联合查询，它组合了两个或更多的独立查询或表的结果。
+	select * from table where id>6
+	union
+	select * from table where id<10
+	order by id desc
+	 
+
+6.子查询
+SELECT * FROM t1 WHERE column1 = (SELECT column1 FROM t2 limit 1);
+SELECT * FROM t1 WHERE column1 in (SELECT column1 FROM t2);
+SELECT * from sky_demo where  exists (select(id) from sky_demo)
+
+7.TRANSACTION 用于启动和结束显式事务。 
+	innodb表 保持数据一致性
+	atm机 银行卡扣了钱 钱没吐出来
+BEGIN TRANSACTION 启动新事务. $db->begin();
+COMMIT [TRANSACTION | WORK] 处理成功 提交事务
+ROLLBACK [TRANSACTION | WORK] 回滚事务 取消操作
+
+课后实践
+
+创建三个表，一个商品表，一个商品分类表，一个订单表
+	商品表
+		商品名称 库存数量 销量 价格 分类 上架时间  状态 
+	商品分类表
+		分类名称 排序 状态
+	订单表
+		订单号	用户  金额 状态 时间
+		
+重点在课后实践 然后运用我们上面所讲的内容，去实现每个操作

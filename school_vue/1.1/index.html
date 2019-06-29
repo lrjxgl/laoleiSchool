@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.title {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="App">
+			<h3 :title="title" class="a" :style="{fontSize:fs}" :class="titleClass">{{title}}</h3>
+			<div @click="at('me')">{{content}}</div>
+			<div v-html="html"></div>
+			<div v-if="a==2">{{a}}</div>
+			<div v-else-if="b==10">{{b}}</div>
+			<div v-else>
+				{{c}}
+			</div>
+			<div v-for="(item,index) in lists" :key="index">
+				<div :class="titleClass" v-if="item==1">{{item}}</div>
+				<div v-else>
+					{{item}}
+				</div>
+
+			</div>
+			<div>
+				<div v-for="(item,name,index) in items" :key="index">
+					{{index}}:{{name}}:{{item}}
+				</div>
+
+			</div>
+
+			<form @submit.prevent="submit">
+				<div>单行文本</div>
+				<input type="text" v-model="formData.title" />
+				<div>多行文本</div>
+				<textarea v-model="formData.content"></textarea>
+				<div>单个复选框</div>
+				<input type="checkbox" true-value="1" false-value="0" id="checkbox" v-model="formData.islove">
+				{{formData.islove}}
+				<label for="checkbox">喜欢读书</label>
+				<div id='example-3'>
+					<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+					<label for="jack">Jack</label>
+					<input type="checkbox" id="john" value="John" v-model="checkedNames">
+					<label for="john">John</label>
+					<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+					<label for="mike">Mike</label>
+					<br>
+					<span>Checked names: {{ checkedNames }}</span>
+				</div>
+				<div id="example-4">
+					<input type="radio" id="one" value="One" v-model="picked">
+					<label for="one">One</label>
+					<br>
+					<input type="radio" id="two" value="Two" v-model="picked">
+					<label for="two">Two</label>
+					<br>
+					<span>Picked: {{ picked }}</span>
+				</div>
+				<div id="example-6">
+  <select v-model="selected"   style="width: 50px;">
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </select>
+  <br>
+  <span>Selected: {{ selected }}</span>
+</div>
+				<button type="submit">提交</button>
+			</form>
+
+
+
+		</div>
+		<script src="../vue.js"></script>
+		<script>
+			var app = new Vue({
+				el: "#App",
+				data: function() {
+					return {
+						fs: '14px',
+						titleClass: "title",
+						title: "认识vue",
+						content: "这是vue内容",
+						html:"<p>这是富文本表</p><p><h1>富文本</h1></p>",
+						a: 1,
+						b: 10,
+						c: 20,
+						lists: [0, 1, 2, 3, 4, 5, 6],
+						items: {
+							"a": "aaa",
+							"b": "bbb"
+						},
+						 selected: 'B',
+						checkedNames: ['Jack'],
+						picked: 'Two',
+						formData: {
+							title: "",
+							content: "",
+							islove: 0,
+
+						}
+					}
+				},
+				created: function() {
+					this.getPage();
+				},
+				methods: {
+					getPage: function() {
+						this.title = "文章标题-认识vue";
+					},
+					at: function(str) {
+						alert(str)
+					},
+					submit: function(e) {
+						var that=this;
+					 
+						alert("提交表单了");
+						console.log(this.formData)
+						return false;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

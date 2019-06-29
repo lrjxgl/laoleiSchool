@@ -1,0 +1,15 @@
+/* pages/index/show.wxss */
+page{
+  background-color: #fff;
+}
+
+.form{
+  padding:10px;
+  background-color: #efefef;
+}
+textarea{
+  background: #fff;
+  padding:5px;
+  width:100%;
+  box-sizing: border-box;
+}

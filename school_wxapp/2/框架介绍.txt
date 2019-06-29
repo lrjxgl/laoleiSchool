@@ -1,0 +1,117 @@
+老雷PHP全栈开发教程之微信小程序开发框架学习
+	学习方式：必看官网手册+其他学习教程辅助
+	mpvue、uniApp  
+	
+	一、小程序配置
+		1.全局配置 小程序根目录下的 app.json 文件用来对微信小程序进行全局配置。  
+			pages
+			tabBar
+		2、页面配置
+				每一个小程序页面也可以使用 .json 文件来对本页面的窗口表现进行配置。
+				navigationBarTitleText
+				enablePullDownRefresh
+				onReachBottomDistance
+		3、sitemap
+			小程序根目录下的 sitemap.json 文件用于配置小程序及其页面是否允许被微信索引，
+			文件内容为一个 JSON 对象，如果没有 sitemap.json ，则默认为所有页面都允许被索引；
+	
+	
+	二、框架接口
+		app.js
+			App() 必须在 app.js 中调用，必须调用且只能调用一次。不然会出现无法预期的后果。
+		page.js 大家必须熟记整个page()
+			page() 注册小程序中的一个页面。接受一个 Object 类型参数，其指定页面的初始数据、生命周期回调、事件处理函数等。
+		模块化
+			module、exports、require
+			// common.js
+			function sayHello(name) {
+			  console.log(`Hello ${name} !`)
+			}
+			function sayGoodbye(name) {
+			  console.log(`Goodbye ${name} !`)
+			}
+
+			module.exports.sayHello = sayHello
+			exports.sayGoodbye = sayGoodbye
+			//page.js
+			var common = require('common.js')
+			Page({
+			  helloMINA: function() {
+				common.sayHello('MINA')
+			  },
+			  goodbyeMINA: function() {
+				common.sayGoodbye('MINA')
+			  }
+			}) 
+			
+	三、wxml
+			WXML（WeiXin Markup Language）是框架设计的一套标签语言，结合基础组件、事件系统，可以构建出页面的结构
+			变量
+				{{data}}
+			wx:for
+				<view wx:for="{{array}}" wx:key="idx" wx:for-index="idx" wx:for-item="itemName">
+				  {{idx}}: {{itemName.message}}
+				</view>
+			wx:if
+			<view wx:if="{{length > 5}}"> 1 </view>
+			<view wx:elif="{{length > 2}}"> 2 </view>
+			<view wx:else> 3 </view>
+			模板
+				WXML提供模板（template），可以在模板中定义代码片段，然后在不同的地方调用。
+			引用
+				WXML 提供两种文件引用方式import和include
+					import 有作用域的概念，即只会 import 目标文件中定义的 template，
+					而不会 import 目标文件 import 的 template。
+					include 可以将目标文件除了 <template/> <wxs/> 外的整个代码引入，相当于是拷贝到 include 位置
+	四、wxs
+		WXS（WeiXin Script）是小程序的一套脚本语言，结合 WXML，可以构建出页面的结构。
+		WXS 与 JavaScript 是不同的语言，有自己的语法，并不和 JavaScript 一致。
+		wxs可以认为是JavaScript的一小部分，没有windo,没有dom
+		
+		模块
+			WXS 代码可以编写在 wxml 文件中的 <wxs> 标签内，或以 .wxs 为后缀名的文件内。
+			每一个 .wxs 文件和 <wxs> 标签都是一个单独的模块。
+			每个模块都有自己独立的作用域。即在一个模块里面定义的变量与函数，默认为私有的，对其他模块不可见。
+			一个模块要想对外暴露其内部的私有变量与函数，只能通过 module.exports 实现。
+			//comm.wxs
+			var foo = "'hello world' from comm.wxs";
+			var bar = function(d) {
+			  return d;
+			}
+			module.exports = {
+			  foo: foo,
+			  bar: bar
+			};
+			module.exports.msg = "some msg";
+			//index.wxml
+			<wxs src="./../comm.wxs" module="some_comms"></wxs>
+			<script src="" module="some_comms"></script>
+			<wxs module="foo">
+			var some_msg = "hello world";
+			module.exports = {
+			  msg : some_msg,
+			}
+			</wxs>
+			<view> {{foo.msg}} </view>
+			
+		引用
+			在.wxs模块中引用其他 wxs 文件模块，可以使用 require 函数。
+			
+			
+		其他基本语法
+			类似Js，如果在小程序出现不兼容，则用小程序。
+		
+课后练习
+		
+	1.配置window栏目
+	2.建立一个基本文章系统 首页 文章列表 详细页 三个页面
+		首页 需要刷新
+		文章列表页 可以无限加载 
+		详细页 我们需要分享
+	3.我们需要建立一个公用js
+		js配置 
+			api接口
+			get
+			post
+			
+		

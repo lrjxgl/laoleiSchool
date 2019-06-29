@@ -1,0 +1,82 @@
+老雷PHP全栈开发教程之vuex
+https://vuex.vuejs.org/zh/
+Vuex 是什么？
+Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，
+	并以相应的规则保证状态以一种可预测的方式发生变化。
+
+Vuex项目结构
+	├── index.html
+	├── main.js
+	├── api
+	│   └── ... # 抽取出API请求
+	├── components
+	│   ├── App.vue
+	│   └── ...
+	└── store
+		├── index.js          # 我们组装模块并导出 store 的地方
+		├── actions.js        # 根级别的 action
+		├── mutations.js      # 根级别的 mutation
+		└── modules
+			├── cart.js       # 购物车模块
+			└── products.js   # 产品模块
+
+核心概念
+	state 状态 相当于data 但不可更改
+	getters store 的计算属性
+		store.getters.doneTodosCount
+	mutations 唯一可改变state的方法 ,方法内计算必须同步
+		store.commit('increment')
+	actions  操作mutations的动作
+		store.dispatch('increment')
+	Module 将store拆分成不同文件
+js知识扩展
+	Promise async  await  
+		https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+		Promise 对象用于表示一个异步操作的最终状态（完成或失败），以及该异步操作的结果值。
+		async 异步函数
+			https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function
+			AsyncFunction 构造函数用来创建新的 异步函数 对象，JavaScript 中每个异步函数都是 AsyncFunction 的对象。
+			await 异步方法内同步阻塞 转promise为值
+	... 解构赋值语法是一种 Javascript 表达式。通过解构赋值, 可以将属性/值从对象/数组中取出,赋值给其他变量。
+		var a=[1,2,3]
+		var b=[...a,4,5,6]
+		console.log(b)
+辅助函数
+			
+	mapState
+		当一个组件需要获取多个状态时候，将这些状态都声明为计算属性会有些重复和冗余。
+		为了解决这个问题，我们可以使用 mapState 辅助函数帮助我们生成计算属性
+	
+	mapGetters 
+		辅助函数仅仅是将 store 中的 getter 映射到局部计算属性
+	mapActions 
+		辅助函数将组件的 methods 映射为 store.dispatch 调用
+	
+	
+//例子
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state,param) {
+      state.count++
+    }
+  },
+  actions: {
+	increment (context,param) {
+      context.commit('increment')
+    }
+  },
+  getters: {
+    doneTodos: state => {
+      return state.todos.filter(todo => todo.done)
+    }
+  }
+})
+
+//课后练习
+	了解购物车例子的实现。
+	用户登录状态
+		
+		

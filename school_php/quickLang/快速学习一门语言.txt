@@ -1,0 +1,62 @@
+
+通用语言快速入门
+
+1.安装环境
+	包括语言运行环境和开发环境
+2.hello world 文件类型
+	基本语法 
+	运行hello world
+	找出输入输出方法 
+3.变量
+	了解变量声明 变量类型 变量赋值 变量使用 
+	整型 浮点 字符串 数组 对象
+4.运算符
+	变量如何赋值
+	字符串如何拼接
+	加减乘除等
+5.判断语句    
+	if elseif else
+	switch case break
+6.循环语句for while 
+	
+7.函数 function 
+	函数声明 函数使用
+	def/function a(){
+		
+	}
+	a();
+8.类 classs
+	类声明 类使用
+	class a{
+		
+	}
+9.变量的处理
+	字符串相关函数
+	数组相关函数
+	对象相关函数  
+	数字相关函数
+10.模块引入
+	include import
+	在b文件引入a文件
+11.文件跳转	
+	由执行a文件到执行b文件
+12.更多库
+	网络
+	文件
+	。。。
+13.前端ui以及后端服务
+	
+//多语言
+php
+javascript
+nodejs
+python
+java
+c
+c++
+Object-c
+c#
+go
+vb
+swift
+kotlin

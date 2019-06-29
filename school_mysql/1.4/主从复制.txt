@@ -1,0 +1,67 @@
+老雷PHP全栈开发教程之mysql主从复制
+
+一、在电脑上配置多个mysql/mariadb
+	https://downloads.mariadb.org/mariadb/10.3.16/
+	下载免装版 mariadb
+	复制两个目录mysqlCopy、mysql21
+	修改my.ini 端口
+	
+	//安装服务
+	mysqld --install mysqlCopy
+	net start mysqlCopy
+	net stop 
+	//修改初始密码
+	use mysql;
+	update user set password=password("1234567") where user="root";
+	flush privileges;
+	
+		
+二、主配置
+	//修改my.ini
+	[mysqld]
+	server-id=1   #主数据的ID
+	log-bin=mysql-bin 
+	//新建主库用户 做复制的用户
+	mysql uroot -p123
+	use mysql;
+	grant replication slave on *.* to slaveuser@'localhost' identified by 'slaveuser';
+	flush privileges;
+	
+三、从库配置
+	//修改my.ini
+	[mysqld]
+	port= 3308
+	//建立用户
+	server-id=20
+	log-bin=mysql-bin
+	//设置数据库
+	replicate-do-db=laoleiphp
+四、主从复制 
+	我们一般使用一主多从
+	主库找出日志
+	show master status;	
+	从库操作
+	change master to master_host='localhost',master_user='slaveuser',master_password='slaveuser',master_log_file='mysql-bin.000514',master_log_pos=327;
+	START SLAVE;
+	show slave status\G #查看slave同步的状态
+
+五、从库如何同步数据
+	一、使用mysqldump 备份数据库
+	//备份主库数据
+	mysqldump -uroot -p123 --routines --single_transaction --master-data=1 --databases laoleiphp > F:/laoleiphp.sql
+	//导入从库数据
+	mysql -uroot -p1234567 laoleiphp<F:/laoleiphp.sql
+	//设置binlog
+	change master to master_host='localhost',master_user='slaveuser',master_password='slaveuser',master_log_file='mysql-bin.000514',master_log_pos=545;
+	START SLAVE;
+	show slave status\G; #查看slave同步的状态
+	二、xtrabackup
+	//备份
+	xtrabackup --backup --target-dir=/mnt/data/all/ --user=root --password=123 --socket=/tmp/mysqld.sock
+	//恢复
+	xtrabackup --prepare --apply-log-only --target-dir=/mnt/data/all/
+	
+	
+课后
+	建立一主两从mysql服务。
+	模拟意外断开重新上线

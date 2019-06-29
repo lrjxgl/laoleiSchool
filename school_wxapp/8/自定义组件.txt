@@ -1,0 +1,40 @@
+老雷PHP全栈开发教程之学习微信小程序自定义组件
+之前我们了解了wxml的模板，可以让不同文件引用。今天我们来介绍一个更强大的共享方式，自定义组件。
+https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html
+https://developers.weixin.qq.com/miniprogram/dev/reference/api/Component.html
+
+Component
+	列表显示 
+		list-item
+	page
+	header 
+	side main
+	footer
+	xml:
+		<view class="wrapper">
+		  <view>这里是组件的内部节点</view>
+		  <slot></slot>
+		</view>
+		<component-tag-name prop-a="{{dataFieldA}}" prop-b="{{dataFieldB}}">
+	Component构造器
+		properties 组件的对外属性，是属性名到属性设置的映射表
+		data	组件的内部数据，和 properties 一同用于组件的模板渲染 setData
+		observers 	组件数据字段监听器，用于监听 properties 和 data 的变化
+		methods 组件的方法，包括事件响应函数和任意的自定义方法，关于事件响应函数的使用
+		behaviors 类似于mixins和traits的组件间代码复用机制 comon.js
+		attached 组件生命周期函数-在组件实例进入页面节点树时执行)
+		externalClasses  组件接受的外部样式类
+		lifetimes 组件生命周期声明对象
+		方法
+			triggerEvent
+Behavior 共用接口配置 coom.js
+	注册一个 behavior，接受一个 Object 类型的参数
+	当组件触发 attached 生命周期时，会依次触发 my-behavior 中的 attached 生命周期函数和 my-component 中的 attached 生命周期函数。
+	课后练习
+		列表显示自定义组件
+			
+		图片上传自定义组件
+		 单图上传
+		 多图上传
+		 
+		 

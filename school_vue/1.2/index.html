@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<c-a>aa</c-a>
+			<list-cell is-goods="1" xmyname="老雷" :list="newList" v-on:call-parent="callParent">
+				<div>跟随学PHP最好</div>
+				<div>{{nickname}}</div>
+			</list-cell>
+			<list-cell is-goods="1" xmyname="老雷" :list="newList" v-on:call-parent="callParent">
+				<div>跟随学PHP最好</div>
+				<div>{{nickname}}</div>
+			</list-cell>
+			
+		</div>
+		<script src="../vue.js"></script>
+		 
+		<script src="list-cell.js"></script>
+		<script>
+			var ca={
+				template:"<div>这是内组件</div>"
+			}
+			var App=new Vue({
+				el:"#app",
+				components:{
+					"c-a":ca		
+				},
+				data:function(){
+					return {
+						nickname:"老雷",
+						newList:[{"id":1,"title":"第一批文章"},{"id":2,"title":"第二批文章"}]
+					}
+				},
+				methods:{
+					callParent:function(v){
+						alert(v.title);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

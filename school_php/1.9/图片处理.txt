@@ -1,0 +1,29 @@
+老雷PHP全栈开发教程之PHP处理图片
+	验证码、打水印、缩略图、拼图、截图
+一、GD库
+	imagecreatefromstring — 从字符串中的图像流新建一图像
+	imagecreatefrompng/jpg/gif — 由文件或 URL 创建一个新图象。
+	imagecreatetruecolor — 新建一个真彩色图像
+	imagecopyresampled — 重采样拷贝部分图像并调整大小
+	imagecrop — 裁剪图片
+	imagescale-缩放
+	imagecopymerge — 拷贝并合并图像的一部分
+	imagejpeg — 输出图象到浏览器或文件。
+	imagefttext — 使用 FreeType 2 字体将文本写入图像
+二、ImageMagic
+	建议在虚拟机中安装centos，测试开发
+	
+三、验证码的思路
+	根据问题和答案，利用session存储答案。
+	比如：补充以下成语，破釜沉__ 答案：舟
+	1+9=? 
+	答案 10
+	利用imagefttext生成文字图片
+	
+课后练习：
+	验证码的功能完善
+	缩略图
+		100x100
+		320xauto
+	拼图
+		实现九宫格拼图

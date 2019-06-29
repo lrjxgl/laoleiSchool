@@ -1,0 +1,57 @@
+#老雷php开发全栈教程#websocket后端服务
+
+
+
+	php开发socket服务，现在流行的框架有两个，swoole和workerman，swoole采用c写的扩展，workerman是由php写的一个库。我们采用基于workerman的GatewayWorker来实现我们的websocket服务。
+	GatewayWorker封装了我们私聊群聊所需要的常用功能，所以我们使用起来也很简单。
+	下载地址：https://www.workerman.net/
+	手册地址：http://doc2.workerman.net/
+	在GatewayWorker中我们只需要在Events.php编写我们的业务就可以了。
+	<?php
+	use \GatewayWorker\Lib\Gateway;
+
+	class Events
+	{
+
+		/**用户连接**/
+		public static function onConnect($client_id)
+		{
+		   //Gateway::sendToCurrentClient("Your client_id is $client_id");
+		}
+		/**用户消息**/
+		public static function onMessage($client_id, $message)
+		{
+			$arr=json_decode($message,true);
+			if($arr["type"]=="login"){
+				return self::login($client_id,$arr);
+				 
+			}
+			// 发送给所有的客户
+			GateWay::sendToAll($message);
+			/*
+			
+			//发送给个人
+			Gateway::sendToClient($client_id, $message);
+			//发送给用户
+			Gateway::sendToUid($uid,$message);
+			//发送给群里的人
+			$gid="测试群";
+			Gateway::sendToGroup($gid,$message);
+			*/
+		}
+		/**认证**/
+		public static function login($client_id,$arr){
+			$message=json_encode($arr);
+			Gateway::sendToClient($client_id, $message);
+		}		
+		/**用户退出***/
+		public static function onClose($client_id)
+		{
+		   // 广播 xxx logout
+		  // GateWay::sendToAll("client[$client_id] logout\n");
+		}
+
+	}
+
+
+?>

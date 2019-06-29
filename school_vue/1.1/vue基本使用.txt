@@ -1,0 +1,42 @@
+老雷PHP全栈开发教程之Vue基础教程
+跟着老雷学PHP，快速成为合格的PHPer
+https://cn.vuejs.org/v2/guide/installation.html
+
+1.生命周期
+beforeCreated created beforeMount mounted  beforeUpdate updated  beforeDestory destoryed  
+
+2.模板语法
+{{}}
+v-bind:class 缩写:class 绑定属性
+v-on:click 缩写 @click 绑定事件
+<div :title="标题" @click="ck">{{title}}</div>
+3.计算属性和侦听属性
+	computed 计算属性
+	watch 侦听属性
+4.Class 与 Style 绑定
+<div :class="{ active: isActive }"></div>
+<div :style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+
+5.if条件
+<div v-if="type === 'A'">
+  A
+</div>
+<div v-else-if="type === 'B'">
+  B
+	<div v-for=""></div>
+</div>
+<div v-else>
+  C
+</div>
+6.for列表
+<div v-for="(item,index) in items" :key="index">
+	<div v-if=""></div>
+  <!-- 内容 -->
+</div>
+7.事件处理
+<div @tap="cc">点击事件</div>
+
+8.表单v-model
+
+课后练习：
+去熟悉vue手册上的知识点
