@@ -1,0 +1,13 @@
+安装xshell  https://xshell.en.softonic.com/
+安装filezilla https://filezilla-project.org/
+	Download	FileZilla Client
+github
+	注册账号
+		https://github.com/
+	安装软件
+		https://desktop.github.com/	
+阿里云
+	购买ecs服务器
+		https://www.aliyun.com/
+		可以购买最便宜的
+以上软件不会安装自行百度		

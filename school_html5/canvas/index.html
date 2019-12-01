@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name=viewport content="width=device-width,initial-scale=1">
+		<title>canvas</title>
+	</head>
+	<body>
+		<canvas id="canvas" width="400" height="400"></canvas>
+	 
+		<script>
+			var canvas=document.getElementById("canvas");
+			var ctx=canvas.getContext("2d");
+			//绘制直线
+			ctx.beginPath();
+			ctx.moveTo(0,0);
+			ctx.lineTo(300,150);
+			ctx.stroke();
+			//绘制矩形
+			ctx.rotate(20*Math.PI/180)
+			ctx.rect(20,20,150,100);
+			ctx.stroke();
+			ctx.rotate(-20*Math.PI/180)
+			//圆形 弧形
+			ctx.beginPath();
+			ctx.arc(100,75,50,0,2*Math.PI);
+			ctx.stroke();
+			ctx.fillStyle="#0000ff";
+			ctx.fillRect(300,30,150,100);
+			//载入图片
+			var img=new Image();
+			img.src="http://img.deitui.com/?w=100&h=100&text=Canvas";
+			img.onload=function(){
+				
+				ctx.drawImage(img,200,10,100,100);
+				
+			}
+			
+		</script>
+	</body>
+</html>

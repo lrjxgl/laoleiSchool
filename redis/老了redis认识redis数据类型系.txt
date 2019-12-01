@@ -1,0 +1,151 @@
+老雷redis教程之认识redis数据类型
+https://redis.io/topics/data-types-intro
+http://www.redis.cn/topics/data-types-intro.html
+
+redis数据类型：
+	字符串（strings）， 
+	散列（hashes）， 
+	列表（lists）， 
+	集合（sets）， 
+	有序集合（sorted sets）， 
+	bitmaps， 
+	hyperloglogs 
+	地理空间（geospatial）
+	streams
+
+公用命令
+	del key
+	expire key 5
+	ttl key
+	exists key
+一、strings 字符串
+		最基本数据类型，我们可以存文本也可以存二进制内容。
+	用途
+		k-v存储
+	常用命令
+		SET key value [ex second]
+		GET key
+		MGET key1 [key2..] 
+		MSET key value [key value ...]
+		SETEX key seconds value
+		
+二、hash 散列		
+		Redis hash 是一个string类型的field和value的映射表，hash特别适合用于存储对象。
+		跟json类似，跟PHP的array也类似
+	用途
+		存储用户信，产品信息等
+		user=>userid,nickname,age
+	常用命令
+		HSET key field value
+		HGET key field 
+		HMSET key field1 value1 [field2 value2 ]
+		HMGET key field1 [field2]
+		HGETALL key 
+		HKEYS key 
+		HDEL key field [field2]
+三、list 列表
+		PHP中的array
+	用途
+		评论列表，消息队列
+		我们可以给一篇文章设置一个list key，然后存储文章的评论
+	常用命令	
+		LPUSH key value1 [value2] 将一个或多个值插入到列表头部
+		RPUSH key value1 [value2] 在列表中添加一个或多个值
+		LLEN key 获取列表长度
+		LRANGE key start stop 获取列表指定范围内的元素
+		LPOP key 移出并获取列表的第一个元素
+		RPOP key 移除并获取列表最后一个元素
+四、sets 无序集合
+		集合就是一堆不重复值的组合。交集、并集、差集。
+	用途
+		标签数据，用户关系，扑克游戏
+	常用命令
+		SADD key member1 [member2] 向集合添加一个或多个成员
+		SCARD key 获取集合的成员数
+		SDIFF key1 [key2] 返回给定所有集合的差集
+		SINTER key1 [key2] 返回给定所有集合的交集
+		SUNION key1 [key2] 返回所有给定集合的并集
+		SISMEMBER key member 判断 member 元素是否是集合 key 的成员
+		SMEMBERS key 返回集合中的所有成员
+		SPOP key 移除并返回集合中的一个随机元素
+		SRANDMEMBER key [count] 返回集合中一个或多个随机数
+五、sorted sets 有序集合 
+		有序集合每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。
+		有序集合的成员是唯一的,但分数(score)却可以重复。
+	用途
+		做排行榜，比如成绩排行，游戏排行
+	常用命令
+		ZADD key score1 member1 [score2 member2] 向有序集合添加一个或多个成员，或者更新已存在成员的分数
+		ZCARD key 获取有序集合的成员数
+		ZCOUNT key min max 计算在有序集合中指定区间分数的成员数
+		ZINCRBY key increment member 有序集合中对指定成员的分数加上增量 increment
+		ZLEXCOUNT key min max 在有序集合中计算指定字典区间内成员数量
+		ZRANGE key start stop [WITHSCORES] 通过索引区间返回有序集合成指定区间内的成员
+		ZRANGEBYLEX key min max [LIMIT offset count] 通过字典区间返回有序集合的成员
+		ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT] 通过分数返回有序集合指定区间内的成员
+		ZRANK key member 返回有序集合中指定成员的索引
+		ZREM key member [member ...] 移除有序集合中的一个或多个成员
+		ZREMRANGEBYLEX key min max 移除有序集合中给定的字典区间的所有成员
+		ZREMRANGEBYRANK key start stop 移除有序集合中给定的排名区间的所有成员
+		ZREMRANGEBYSCORE key min max 移除有序集合中给定的分数区间的所有成员
+		ZREVRANGE key start stop [WITHSCORES] 返回有序集中指定区间内的成员，通过索引，分数从高到底
+		ZREVRANGEBYSCORE key max min [WITHSCORES] 返回有序集中指定分数区间内的成员，分数从高到低排序
+		ZREVRANK key member 返回有序集合中指定成员的排名，有序集成员按分数值递减(从大到小)排序
+		ZSCORE key member 返回有序集中，成员的分数值
+六、bitmaps
+		BitMap 就是通过一个 bit 位来表示某个元素对应的值或者状态，一般值为0或1.
+	用途
+		统计活跃数据，统计在线人数等
+		https://www.jianshu.com/p/62cf39db5c2f
+	常用命令
+		SETBIT key offset value  set ww 1234 0 set ww 1235 1 set ww 1236 1
+		GETBIT key offset
+		BITCOUNT key [start end] 统计值为1
+		BITOP operation destkey key [key ...] 位运算
+七、hyperloglogs
+		Redis 的基数统计，这个结构可以非常省内存的去统计各种计数，比如注册 IP 数、每日访问 IP 数、页面实时UV）、在线用户数等。但是它也有局限性，就是只能统计数量 而且是估值，而没办法去知道具体的内容是什么。
+		 
+	常用命令
+		PFADD key element [element ...] 添加
+		PFMERGE destkey sourcekey [sourcekey ...] 合并多可key
+		PFCOUNT key [key ...] 统计
+		
+八、geo 地理空间
+		地理位置
+	用途
+		与地理位置相关 如附近的人，景点，位置距离
+	常用命令
+		GEOADD key longitude latitude member [longitude latitude member ...] 设置
+		GEOHASH key member [member ...] 返回一个或多个位置元素的 Geohash 表示。
+		GEOPOS key member [member ...] 从key里返回所有给定位置元素的位置（经度和纬度）
+		GEODIST key member1 member2 [unit] 返回两个给定位置之间的距离。
+		GEORADIUS key longitude latitude radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count]
+			以给定的经纬度为中心， 返回键包含的位置元素当中， 与中心的距离不超过给定最大距离的所有位置元素。
+		GEORADIUSBYMEMBER key member radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count]
+			以给你的成员位置，找出指定范围内的元素
+			
+九、streams
+		http://www.redis.cn/topics/streams-intro.html
+		https://yq.aliyun.com/articles/603193?spm=a2c4e.11163080.searchblog.149.546f2ec1vWOtok
+		它以更抽象的方式模拟日志数据结构，但日志仍然是完整的：就像一个日志文件，通常实现为以只附加模式打开的文件，Redis流主要是一个仅附加数据结构。
+	用途
+		消息队列
+	常用命令
+		XADD key ID field string [field string ...] 将指定的流条目追加到指定key的流中
+		XACK key group ID [ID ...] XACK命令用于从流的消费者组的待处理条目列表（简称PEL）中删除一条或多条消息。
+		XGROUP [CREATE key groupname id-or-$] [SETID key id-or-$] [DESTROY key groupname] [DELCONSUMER key groupname consumername] 该命令用于管理流数据结构关联的消费者组
+		XRANGE key start end [COUNT count] 返回流中满足给定ID范围的条目
+		XREVRANGE key end start [COUNT count] 此命令与XRANGE完全相同，但显著的区别是以相反的顺序返回条目，并以相反的顺序获取开始-结束参数
+		XPENDING key group [start end count] [consumer] 通过消费者组从流中获取数据，而不是确认这些数据，具有创建待处理条目的效果
+		XREAD [COUNT count] [BLOCK milliseconds] STREAMS key [key ...] ID [ID ...]
+			从一个或者多个流中读取数据，仅返回ID大于调用者报告的最后接收ID的条目。此命令有一个阻塞选项，用于等待可用的项目，类似于BRPOP或者BZPOPMIN等等。
+		XREADGROUP GROUP group consumer [COUNT count] [BLOCK milliseconds] STREAMS key [key ...] ID [ID ...]
+			类似xread，只是从组中读取数据
+		XTRIM key MAXLEN [~] count XTRIM将流裁剪为指定数量的项目	
+		
+		
+
+课后练习
+	了解上面的数据类型
+	并且对于常用的命令 进行操作
+	去官网了解更多的命令

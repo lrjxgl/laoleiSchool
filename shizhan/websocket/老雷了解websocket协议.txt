@@ -1,0 +1,73 @@
+老雷socket编程之websocket实现
+
+我们主要实现私聊和群聊两个功能,要在web端实现想微信QQ那样的即时通讯的功能，我们需要了解一下websocket。
+websocket是一种可以双向通讯的长连接协议，http是获取完数据就关闭，websocket则可以一直连接，就像铺了一条管道一样，水可以一直流着。
+
+ 
+
+一、websocket前端
+	var ws = new WebSocket("ws://127.0.0.1.com:8282");
+	ws.onopen=function(){
+		var msg = JSON.stringify({
+			type: "login",
+			content: "login"
+		});
+		ws.send(msg);
+	}
+	
+	ws.onmessage = function (e){ 
+		console.log(e);
+		//服务器发送的内容
+		var res = JSON.parse(e.data);
+		switch(res.type){
+			case "login":
+				
+				break;
+			case "pm":
+				
+				break;
+			case "groupPm":
+				
+				break;
+				
+		}
+	}
+	ws.onerror=function (e){ 
+		console.log(e);
+	}
+	ws.onclose=function (e){ 
+		console.log(e);
+	}
+二、服务端
+	 ​websocket的实现需要在socket服务上增加websocket握手和消息加解密
+	客户端发送http请求，带上Sec-WebSocket-Key，
+	服务端握手 加密key,发送给客户端。
+	双方能进行交流。
+	发送接收消息需要进行打包encode 解包decode。
+
+三、常见应用
+
+1.聊天室、群聊 实现类似QQ群的web版本
+
+2.im私聊、客服 实现类似qq聊天，和即时客服交流
+
+3.消息推送 建立即时的web消息推送
+
+课后练习
+	实现聊天室 跟 个人聊天
+	前端格式
+	var msg = JSON.stringify({
+		type: "login",
+		content: "login"
+	});
+	var msg = JSON.stringify({
+		type: "group",
+		content: "login",
+		gid:123
+	});
+	
+	var msg = JSON.stringify({
+		type: "pm",
+		content: "login",
+		uid:123
+	});

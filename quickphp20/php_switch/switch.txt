@@ -1,0 +1,66 @@
+switch 语句类似于具有同一个表达式的一系列 if语句
+<?php
+if ($i == 0) {
+    echo "i equals 0";
+} elseif ($i == 1) {
+    echo "i equals 1";
+} elseif ($i == 2) {
+    echo "i equals 2";
+}else{
+	
+}
+
+switch ($i) {
+	case 'a':
+    case 0:
+        echo "i equals 0";
+        break;
+    case 1:
+        echo "i equals 1";
+        break;
+    case 2:
+	case 3:
+        echo "i equals 2";
+        break;
+	default:
+		echo "其他";
+		break;
+}
+//switch 和if可以互相嵌套
+$a="aa";
+$b="2";
+switch($a){
+	case "aa":
+		if($b==2){
+			echo "aa 2";
+		}
+		break;
+	default:
+		echo "其他的";
+		break;
+}
+?>
+课后练习
+一、小明过马路，红灯停，绿灯行，黄灯亮了等一等。
+
+二、两颗骰子，如果加起来等于8、10、12则，赢。加起来等于3、4、5则输，其他点数平。
+
+
+三、留言板页面  guest.php 
+		1.首页 	  index或者其他非以下条件
+		2.添加页	  add
+		3.保存页面 save
+		4.删除页面 delete
+		5.回复页面 reply
+		6.回复保存 reply_save
+	要求输入对应的参数输出对应的名称
+		如
+		guest.php?a=add 输出添加页
+		guest.php?a=save 输出保存页面
+		其他的不在以上的页面 则输出 首页
+		获取参数a的值
+		$a=isset($_GET["a"])?$_GET["a"]:"";
+		switch($a){
+			case "add":
+				break;
+		}

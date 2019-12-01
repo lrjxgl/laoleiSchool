@@ -1,0 +1,136 @@
+老雷linux教程之目录文件权限
+
+推荐《鸟哥的Linux私房菜基础版》
+
+#获取命令教程
+man cd 
+cd -h help
+一、文件目录管理
+#切换目录
+cd / .. ./ dir
+#列出目录文件
+pwd 显示当前目录
+list -l 列出目录内容
+#目录管理
+mkdir laoleiphp 创建目录
+mkdir -p a/b/c 创建多级目录
+rmdir laoleiphp 删除当前非空目录
+#文件管理
+
+#touch [-acdmt] file 创建文件
+	-a ：仅修订 access time；
+	-c ：ctime chang time仅修改文件的时间，若该文件不存在则不创建新文件；
+	-d ：后面可以接欲修订的日期而不用目前的日期，也可以使用 --date="日期或时间"
+	-m ：仅修改 mtime modify time；
+	-t ：后面可以接欲修订的时间而不用目前的时间，格式为[YYYYMMDDhhmm]
+#vi hello.txt 使用vim编辑器创建
+	hi vim;
+	:wq
+#cp 复制文件或目录
+	cp old new
+#rm 删除文件或者目录
+	rm file
+	rm -r dir
+#mv 重命名或者移动
+	mv old new
+	
+二、查看文件内容
+	cat 由第一行开始显示文件内容
+	tac 从最后一行开始显示，可以看出 tac 是 cat 的倒着写！
+	nl 显示的时候，顺道输出行号！
+	more 一页一页的显示文件内容
+	less 与 more 类似，但是比 more 更好的是，他可以往前翻页！
+	head 只看头几行
+	tail 只看尾巴几行
+	#more a.php
+		空白键 ：下一页；
+		b键 ：上一页
+		Enter ：下一行；
+		/word ：查询word；
+		:f ：立刻显示出文件名以及目前显示的行数；
+		q键 ：退出阅读
+		
+	#less
+		空白键 ：下一页；
+		F键： 向前移动一屏
+		B键： 向后移动一屏
+		D键：  向前移动半屏
+		U键：  向后移动半屏
+		[pagedown]：下一行；
+		[pageup] ：上一行；
+		/字串 ：向下搜寻“字串”的功能；
+		?字串 ：向上搜寻“字串”的功能；
+		n ：重复前一个搜寻 （与 / 或 ? 有关！）
+		N ：反向的重复前一个搜寻 （与 / 或 ? 有关！）
+		g ：前进到这个数据的第一行去；
+		G ：前进到这个数据的最后一行去 （注意大小写） ；
+		q ：离开 less 这个程序；
+	#head -n 10 file	
+	#tail 后几行
+		tail  -n 10 file 最后1行
+		tail  -n +100 file 取出100行后
+		
+三、搜索文件
+	#which php 搜索可执行文件
+	#whereis [-bmsu] filename
+		-l :可以列出 whereis 会去查询的几个主要目录而已
+		-b :只找 binary 格式的文件
+		-m :只找在说明文档 manual 路径下的文件
+		-s :只找 source 来源文件
+		-u :搜寻不在上述三个项目当中的其他特殊文件
+	#find [PATH] [option] [action] 
+		find命令具有丰富的查询功能
+		1.文件时间属性 -atime access, -ctime change与 -mtime modify
+		-mtime n ：n 为数字，意义为在 n 天之前的“一天之内”被更动过内容的文件；
+		-mtime +n ：列出在 n 天之前（不含 n 天本身） 被更动过内容的文件文件名；
+		-mtime -n ：列出在 n 天之内（含 n 天本身） 被更动过内容的文件文件名。
+		-newer file ：file 为一个存在的文件，列出比 file 还要新的文件文件名
+		find / -mtime 0 24小时修改的
+		
+四、权限
+	1.文件用户角色
+		拥有者 所属组 其他人
+	2.文件权限
+		r-读 w写 x执行
+		r=4，w=2，x=1
+		ls -al
+		拥有者 所属组 其他人
+		rwx	rw	r 
+		421	42	4
+		7	6	4
+		755
+	3.改变文件属性权限
+	chgrp group file ：改变文件所属群组
+	chown user file ：改变文件拥有者
+	chmod 0777 file：改变文件的权限	
+	chmod -R 0777 dir：改变目录下所有文件权限	
+五、文件解压缩
+	#tar -[xzvf] file
+		-c ：创建打包文件，可搭配 -v 来察看过程中被打包的文件名（filename）
+		-t ：察看打包文件的内容含有哪些文件名，重点在察看“文件名”就是了；
+		-x ：解打包或解压缩的功能，可以搭配 -C （大写） 在特定目录解开
+		特别留意的是， -c, -t, -x 不可同时出现在一串命令行中。
+		-z ：通过 gzip 的支持进行压缩/解压缩：此时文件名最好为 *.tar.gz
+		-j ：通过 bzip2 的支持进行压缩/解压缩：此时文件名最好为 *.tar.bz2
+		-J ：通过 xz 的支持进行压缩/解压缩：此时文件名最好为 *.tar.xz
+		特别留意， -z, -j, -J 不可以同时出现在一串命令行中
+		-v ：在压缩/解压缩的过程中，将正在处理的文件名显示出来！
+		-f filename：-f 后面要立刻接要被处理的文件名！建议 -f 单独写一个选项啰！（比较不会忘记）
+		-C 目录 ：这个选项用在解压缩，若要在特定目录解压缩，可以使用这个选项。
+	压 缩：tar -c[zjJ][v]f filename.tar.bz2 要被压缩的文件或目录名称
+	查看内容：tar -tf filename.tar.bz2
+	解压缩：tar -x[zjJ][v]f filename.tar.bz2 -C 欲解压缩的目录
+	
+	#zip yum install zip unzip
+		压缩：zip -qr aaa.zip aaa 将aaa目录添加到aaa.zip
+	#unzip 
+		解压 unzip -od ./aaa aaa.zip
+		unzip aa.zip
+		-o:不提示的情况下覆盖文件；
+		-d:指定目录
+	
+课后练习
+	创建一个可读写xuexi.txt文件
+	创建一个可读写执行文件 ./aa/dd/ss.php
+	创建一个压缩包 aa.tar.gz
+		

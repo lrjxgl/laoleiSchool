@@ -1,0 +1,27 @@
+老雷PHP24小时快速入门及留言板开发
+	本课程的目的是让大家熟悉PHP，并能进行简单的项目开发，作为初学者入门课程，可以提高大家的兴趣。
+##基础部分 约10个小时
+	0.php开发环境安装配置	
+	1.学习html/css制作留言板页面，4小时
+		html标签  
+		css 标签 
+		guest 留言板html  
+	2.PHP基本语法  20分钟	:php_hello
+	3.PHP变量及类型 30分钟 :php_var
+	4.PHP运算符  30分钟  :php_eq
+	5.条件语句 30分钟	  
+		if条件执行 if elseif else  :php_if
+		switch条件switch case break  :php_switch
+	7.for foreach循环语句  30分钟 :php_for
+		for循环 for break continue; 
+		foreach循环foreach break continue Array 
+	9.while循环条件 whie do-while break continue 15分钟 :php_while
+	10.函数function 1小时 :php_function
+	11.类与对象 1小时 :php_class
+	12.命名空间 20分钟 :php_namespace
+##项目实践部分 约14个小时
+	13.mysqli扩展及数据库curd实现 3小时
+	14.实现留言板 3小时
+	15.实现用户登录注册模块 1小时
+	16.实现帖子 3小时
+	17.课程总结

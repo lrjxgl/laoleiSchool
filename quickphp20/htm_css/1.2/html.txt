@@ -1,0 +1,28 @@
+#老雷PHP全栈开发教程#常用html标签
+
+
+布局标签
+	div p span
+	a
+	h1-h6 
+	ul/ol li
+	dl dt dd
+	table thead tbody  tr td th
+	label
+	
+表单元素
+	form
+	input text radio checkbox file
+	textarea
+	select option
+	button
+媒体元素
+	img
+	audio 
+	video
+	
+其他标签
+	html,body
+	head,title,meta,link
+	style
+	script

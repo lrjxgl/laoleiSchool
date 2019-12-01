@@ -1,5 +1,5 @@
 module.exports={
-	apiHost:"http://school.com/school_php/",
+	apiHost:"http://school.com/",
 	get:function(ops){
 		var callback=ops.success;
 		uni.request({

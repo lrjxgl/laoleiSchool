@@ -1,0 +1,20 @@
+老雷JavaScript基础教程之for循环
+一、for语法
+for (语句 1; 语句 2; 语句 3) {
+     要执行的代码块
+}
+for(var i=0;i<10;i++){
+	console.log(i)
+}
+var arr=["aa","bb","cc"]
+for(var i=0;i<arr.length;i++){
+	console.log(arr[i])
+}
+二、for in语法
+var obj={
+	id:1,
+	title:"哈哈"
+}
+for(var  i in obj){
+	console.log(i,obj[i]);
+}

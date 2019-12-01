@@ -1,0 +1,35 @@
+用户模块知识点
+	本节实战内容 实现用户注册及登录功能，涉及cookie及session知识点
+	cookie
+		cookie 是由服务器发送到浏览器的变量。
+		setcookie(name,value,expire,path,domain,secure)
+		name	必需。规定 cookie 的名称。
+		value	必需。规定 cookie 的值。
+		expire	可选。规定 cookie 的有效期。
+		path	可选。规定 cookie 的服务器路径。
+		domain	可选。规定 cookie 的域名。
+		secure	可选。规定是否通过安全的 HTTPS 连接来传输 cookie。
+		//设置
+		setcookie("key","val", time()+3600*24,"/");
+		setcookie("key","val", time()+3600*24,"/","school.com");
+		//删除
+		setcookie("key","val", time()-1,"/");
+		//读取
+		$_COOKIE["key"];
+	session
+		session 变量用于存储有关用户会话的信息，或更改用户会话的设置
+		它包含两部分：1.PHPSESSID 存储在用户cookie中  2.具体的值 存储到服务器中
+		使用session必须先开启 
+		session_start()
+		$_SESSION["key"]="val";
+		unset($_SESSION["key"]);
+		
+	user表
+		CREATE TABLE `sky_user` (
+		  `userid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+		  `username` varchar(32) NOT NULL DEFAULT '',
+		  `nickname` varchar(32) NOT NULL DEFAULT '',
+		  `password` varchar(32) NOT NULL DEFAULT '',
+		  PRIMARY KEY (`userid`)
+		) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+		

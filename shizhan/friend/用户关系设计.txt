@@ -1,0 +1,80 @@
+老雷PHP全栈开发教程之用户关系设计
+课堂实践系列
+常见的用户关系有粉丝关系和好友关系
+
+粉丝关系
+	关注 被关注 互相关注
+	follow 关注表
+		id userid touserid status dateline
+	followed 被关注表
+		id userid touserid status dateline
+	关注操作
+		
+			function follow(){
+				$follow=select("follow");
+				$followed=select("followed");
+				if($follow){
+					return false;
+				}
+				if($followed){
+					$status=1
+					user.update("followed");
+					touser.update("follow");
+				}else{
+					touser.insert("followed");
+				}
+				user.insert("follow");
+				
+			}
+	取关操作
+		function unfollow(){
+			$follow=select("follow");
+			if($follow){
+				return false;
+			}
+			$followed=select("followed");
+			user.delete("follow");
+			touser.delete("followed");
+			if($followed){
+				status=0;
+				user.update("followed");
+				touser.update("follow");
+			}
+		}
+
+好友关系
+	成为好友必须先申请加好友,所以我们需要两个表
+	friend_apply
+		id userid touserid description dateline status 
+	friend
+		id userid touserid dateline
+	
+	操作
+		申请成为好友
+			function apply(){
+				if(!select("friend_apply"))
+				touser.insert("friend_apply");
+			}
+		通过好友
+			function pass(){
+				delete("friend_apply");
+				user.insert("friend");
+				touser.insert("friend");
+			}
+		不通过
+			function forbid(){
+				//禁止再申请加好友
+				update("friend_apply");
+				//只是不通过 
+				delete("friend_apply");
+			}
+		删除好友
+			function delete(){
+				select("friend");
+				user.delete("friend");
+				touser.delete("friend");
+			}	
+
+课后练习
+	这两种关系功能都实现出来
+		

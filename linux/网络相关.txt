@@ -1,0 +1,33 @@
+老雷linux笔记
+
+centos7 防火墙
+一、firewall
+	firewall-cmd --state
+	systemctl stop firewalld.service
+	systemctl status firewalld;#查看状态
+	systemctl disable firewalld;#开机禁用
+	systemctl enable firewalld;#开启启动
+	firewall-cmd --zone=public --add-port=80/tcp --permanent #开放80/tcp端口  （--permanent永久生效，没有此参数重启后失效）;
+	firewall-cmd --reload;#
+	firewall-cmd --zone= public --query-port=80/tcp;#查看80/tcp端口
+	firewall-cmd --zone= public --remove-port=80/tcp --permanent;#删除该端口开放
+二、iptables
+	允许所有端口
+	iptables -I IN_public_allow 1 -j ACCEPT
+
+三、IP
+	ip addr
+
+四、解除端口占用
+yum install lsof
+   lsof -i:port
+	kill -9 pid
+	
+五、netstat
+
+-t : 指明显示TCP端口
+-u : 指明显示UDP端口
+-l : 仅显示监听套接字(所谓套接字就是使应用程序能够读写与收发通讯协议(protocol)与资料的程序)
+-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序。
+-n : 不进行DNS轮询，显示IP(可以加速操作)
+netstat -ntulp |grep 80

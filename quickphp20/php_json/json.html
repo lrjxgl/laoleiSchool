@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="el"></div>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		<script>
+			var json={
+	"key":"val",
+	"num":123,
+	"bool":true,
+	"key2":[
+		"a",
+		{"a":"a","b":"b"}
+	]
+}
+	console.log([1, 2, "3", {"a": 4}]);
+	console.log(json);
+			$.ajax({
+				url:"json.php",
+				dataType:"json",
+				success:function(res){
+					console.log(res)
+					$("#el").html(res.data.title);
+					for(var i in res.list){
+						console.log(res.list[i])
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

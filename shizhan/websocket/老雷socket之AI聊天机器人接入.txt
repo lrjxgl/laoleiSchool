@@ -1,0 +1,8 @@
+老雷socket之AI聊天机器人接入
+unit
+https://ai.baidu.com/unit/
+UNIT机器人对话API文档
+https://ai.baidu.com/docs#/UNIT-v2-service-API/top
+代码接入
+一、设置机器人账号
+	

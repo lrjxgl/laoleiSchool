@@ -1,0 +1,33 @@
+老雷socket编程之传文件
+
+一、传文件有两种方式
+	1.socket传文件内容
+		我们可以将图片、文件 base64编码后传输，再接收的时候再解码。
+		
+	2.socket传文件地址
+		我们把文件传送到服务器，再获取文件地址传送给对方，对方根据文件类型解析。
+
+二、传表情
+
+	常用表情
+	   对于常用表情我们都会固定写死，然后我们根据[微笑]<=><img src="weixiao.gif" class="im-emo" />。解析
+	其他表情包
+	   表情包我们可以当做图片来处理
+
+三、传文件
+	传文件 推荐文件上传到服务器，然后传地址。
+	
+	传图片 
+		[img=aa.jpg]<=><img class="im-img" src="aa.jpg">
+	传音品
+		[audio=aa.mp3]<=><audio class="im-audio" src="aa.jpg"></audio>
+	传视频
+		[video=video.mp4]<=><video class="im-video" src="aa.jpg"></video>	
+	文件
+		[file=aa.zip]<=><div class="im-file" url="aa.zip">aa.zip</div>
+		
+
+课后练习：
+	实现完整的文件传输功能
+		文件上传到服务器 发送地址给用户
+		表情包 弹框选择 

@@ -1,0 +1,69 @@
+老雷html/css菜鸟入门集训课程
+
+本节课我们主要讲解div+css布局页面
+
+1.认识div标签
+	div默认是一个block块布局，css{display: block;}。
+2.div是可以无限嵌套子标签的
+	<div>
+		<div>
+			<h4>H4</h4>
+			<div>多级嵌套</div>
+		</div>
+	</div>
+3.div标签的属性
+	一个标签含多个属性
+	<div  class="red" id="title" style="font-size: 18px;" href="" onclick="alert('我被点击了')" title="这是表">div标签的属性</div>
+4.学习几个css属性
+	
+	宽度 width:100px;width:10%;
+	高度 height:100px;
+	字体大小 font-size:16px;1rem; 
+	字体颜色 color:#f30; 
+	背景颜色 background-color:#ff0;
+	.box{
+		width:100px;
+		height:100px;
+		font-size:16px;
+		color:#f30;
+		background-color:#ff0;
+	}
+5.网页布局
+	div默认是上下布局的，我们主要讲解左右布局的实现。
+	布局方式
+		三列中间自适应布局
+		两列左侧自适应布局
+		两列右侧自适应布局
+	css布局实现方式
+		flex方式布局，移动端推荐。flex方式很容易实现左右布局
+			.flex{
+				display: flex;
+				flex-direction: row;
+			}
+		float方式,左右浮动
+			float:left,right,none;
+			clear:left,right,both,none;
+			.fl{
+				float:lef;
+			}
+		position方式
+			position属性是一种定位属性，可以配合top,left,right,bottom，进行页面定位。
+			相对低于上一级的定位
+			position：fixed/absolute/relative/static;
+			css{
+				position:absolute/fixed/relative/static;
+				left:10px;
+				right:10px;
+				top:10px;
+				bottom:10px;
+				z-index:10;
+			}
+			.abs{
+				position: absolute;
+				background-color: #0F8E82;
+				left:10px;
+				right:10px;
+				top:10px;
+				bottom:10px;
+				z-index:10;
+			}

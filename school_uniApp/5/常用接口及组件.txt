@@ -1,0 +1,34 @@
+老雷PHP全栈开发教程之微信小程序使用基础组件及api接口构建文章系统
+	今天这节课让我们来实现上节课课后练习的构建文章系。
+	首页 列表页 详细页
+常用组件
+	view
+	text
+	rich-text
+	image
+	scroll-view
+	swiper
+	
+常用api
+	//网络请求
+	uni.request
+	//跳转
+	uni.switchTab
+	uni.navigateTo
+	uni.navigateBack
+	uni.redirectTo
+	uni.reLaunch
+	
+ uniapp事件
+	bind事件绑定不会阻止冒泡事件向上冒泡，catch事件绑定可以阻止冒泡事件向上冒泡
+	var id = event.currentTarget.dataset.id; data-id
+	
+
+课后练习
+	完善我们的文章系统
+	自己写个文章系统后台接口，接口格式
+	echo json_encode(array(
+		"error"=>0,
+		"message"=>"success",
+		"data"=>$data
+	));

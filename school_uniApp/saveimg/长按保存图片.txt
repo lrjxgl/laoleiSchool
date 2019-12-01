@@ -1,0 +1,7 @@
+老雷uniapp之长按保存图片的实现
+长按保存图片 longtap
+<img @longtap="saveImg(imgurl)" class="h160" :src="imgurl" />
+uni.downloadFile
+uni.saveImageToPhotosAlbum
+
+ 

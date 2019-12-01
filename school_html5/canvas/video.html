@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas style="position: fixed; top: 50px; right: 20px;" id="canvas" width="200" height="200"></canvas>
+		<video src="movie.mp4" id="video" width="400" controls="" height="400"></video>
+		<button type="button" class="btn" id="camera">截图</button>
+		<img src="" id="imgs">
+		<script>
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+
+			var vd = document.getElementById("video");
+			var i
+			vd.addEventListener('play', function() {
+				i = window.setInterval(function() {
+					ctx.drawImage(vd, 0, 0, 200, 110);
+					
+				}, 20);
+			}, false);
+			document.getElementById("camera").addEventListener("click",function(){
+				var img=canvas.toDataURL("image/png");
+				document.getElementById("imgs").src=img;
+				downLoad(img);
+			});
+			vd.addEventListener('pause',function() {window.clearInterval(i);},false);
+			vd.addEventListener('ended',function() {clearInterval(i);},false);
+			function downLoad(url){
+				var oA = document.createElement("a");
+				oA.download = '';
+				oA.href = url;
+				document.body.appendChild(oA);
+				oA.click();
+				oA.remove(); 
+			}
+		</script>
+	</body>
+</html>

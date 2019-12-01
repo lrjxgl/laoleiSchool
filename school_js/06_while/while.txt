@@ -1,0 +1,29 @@
+老雷JavaScript基础教程之while
+
+一、while
+while (条件) {
+    要执行的代码块
+}
+continue 不执行while后面语句,重新循环
+break 跳出while语句 
+
+while (i < 10) {
+	if(i==8) {
+		 i++;
+		 continue;
+	}
+	text += "数字是 " + i;
+	if(i==9) break;
+	 i++;
+}
+console.log(text);
+二、do while 至少执行一次
+do {
+    要执行的代码块
+}
+while (条件);
+m=0;
+do{
+	console.log("m="+m);
+	if(m==2) break;
+}while(m>0)

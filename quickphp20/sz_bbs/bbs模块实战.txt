@@ -1,0 +1,43 @@
+老雷PHP教程之简易论坛的实战
+
+功能
+	用户登录 注册
+	发布主题
+	发布跟帖
+	论坛首页
+	论坛详情页
+
+论坛的表
+CREATE TABLE `sky_bbs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT '' COMMENT '主题',
+  `userid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
+  `catid` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '类型',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '状态',
+  `createtime` datetime NOT NULL DEFAULT '2019-01-17 08:08:01' COMMENT '留言时间',
+  `content` text COMMENT '留言内容',
+  `view_num` int(10) unsigned NOT NULL DEFAULT '0',
+  `comment_num` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `catid` (`catid`),
+  KEY `userid` (`userid`,`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COMMENT='论坛';
+
+CREATE TABLE `sky_bbs_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `topicid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '主题',
+  `userid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '状态',
+  `createtime` datetime NOT NULL DEFAULT '2019-01-17 08:08:01' COMMENT '评论时间',
+  `content` text COMMENT '评论内容',
+  PRIMARY KEY (`id`),
+  KEY `userid` (`userid`,`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COMMENT='论坛评论';
+
+新知识
+
+in_array 判断一个字符串是否在数组中
+header("Location: user.php?a=login");  跳转页面
+explode(".",$str) 将字符串分割成数组
+implode(",",$ids) 将数组转为字符串
+

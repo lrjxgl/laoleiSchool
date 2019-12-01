@@ -5,7 +5,8 @@
     "pages/index/list",
     "pages/index/show",
     "pages/index/add",
-    "pages/index/component"
+    "pages/index/component",
+    "pages/udbsocket/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

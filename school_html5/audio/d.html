@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<audio autoplay="" controls src="摘草莓.mp3"></audio>
+		<script>
+			var audio=new Audio();
+			
+			document.addEventListener("click",function(){
+				audio.src="摘草莓.mp3";
+				audio.oncanplay=function(){
+					audio.play();
+				}
+			})
+			
+		</script>
+	</body>
+</html>

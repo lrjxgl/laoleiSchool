@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+ 
+			function add(a,b){
+				//未声明的变量赋值 会被绑定为window属性 成为全局变量
+				un="aa";
+				return a+b;
+			}
+			console.log(add(3,5));
+			var minus=function(a,b){
+				console.log(un);
+				return a-b;
+			}
+			console.log(minus(7,2));
+			setTimeout(function(){
+				console.log("回调函数");
+			},100)
+			
+			 function fa(){
+				 var b;
+				 var fd=function(){
+					 b=2;
+				 }
+				 fd();
+				 console.log(b);
+			 }
+			 fa();
+		</script>
+	</body>
+</html>

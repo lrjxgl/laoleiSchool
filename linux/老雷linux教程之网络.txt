@@ -1,0 +1,21 @@
+老雷linux教程之linux网络及防火墙
+ip、ss、ps
+
+一、ip
+
+
+二、route 路由
+
+ifup/ifdown
+
+三、dhclient eth0
+	手动使用dhcp 自动获取ip参数
+
+四、ping
+	
+五、ss 查看网络信息
+	Socket Statistics（ss）命令类似于netstat，它用于显示各种有用的网络套接字信息
+	ss命令是Linux CentOS 7中iproute软件包的一部分，默认已经安装。
+	#ss -h
+	#ss -plnt sport eq 80
+		查找端口

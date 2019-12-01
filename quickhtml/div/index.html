@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>div布局</title>
+	</head>
+	<body>
+		
+		<h3>
+			div默认是一个block块布局，css{display: block;}。
+		</h3>
+		<div>
+			<h3>div是可以无限嵌套的</h3>
+			<div>
+				<div>
+					<h4>H4</h4>
+					<div>多级嵌套</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<h3>一个标签含多个属性</h3>
+			<div  class="red" id="title" style="font-size: 18px;" href="" onclick="alert('我被点击了')" title="这是表">div标签的属性</div>
+		</div>
+		<h3>div布局-网页的布局主要有div+css标签实现的</h3>
+		<div>
+			网页默认是上下布局的
+		</div>
+		<h3>学几个css属性</h3> 
+		<style>
+			.css1{
+				width:100px;
+				height:100px;
+				font-size:16px;
+				color:#f30;
+				background-color: #0F8E82;
+			}
+		</style>
+		<div class="css1">
+			这是css1的样式
+		</div>
+		<div>flex方式布局，移动端推荐。flex方式很容易实现左右布局</div>
+		<style>
+			.flex{
+				display: flex;
+				flex-direction: row;
+				margin-bottom: 5px;
+			}
+			.box{
+				height: 30px;
+				width:200px;
+				background-color: #0F8E82;
+			}
+			.flex-1{
+				flex: 1;
+				background-color: #B8CFEA;
+			}
+		</style>
+		<div class="flex">
+			<div class="box">左</div>
+			<div class="flex-1">中</div>
+			<div class="box">右</div>
+		</div>
+		<div class="flex">
+			<div class="box">左</div>
+			<div class="flex-1">右</div>
+		</div>
+		<div class="flex">
+			<div class="flex-1">左</div>
+			<div class="box">右</div>
+			
+		</div>
+		<div>float方式</div>
+		<div>
+			float方式通过.left{float:left;margin-left:-100px;position:relative;}
+		</div>
+		<style>
+			.frow:after{
+				clear: both;
+				content: ".";
+				height: 0;
+				visibility: hidden;
+			}
+			/* 三列中间自适应布局 */
+			.g-bd5{margin:0 0 10px;}
+			.g-sd51,.g-sd52{position:relative;float:left;width:230px;margin:0 -230px 0 0; }
+			.g-sd52{float:right;width:190px;margin:0 0 0 -190px;}
+			.g-mn5{float:left;width:100%;}
+			.g-mn5c{margin:0 190px 0 230px; }
+			.g-sd51 p,.g-sd52  {
+			    background-position-x: #e51400;
+			}
+			.fside{
+				background-color: #0F8E82;
+				height: 40px;
+			}
+			.fmain{
+				height: 40px;
+				background-color: #B8CFEA;
+			}
+		</style>
+		<div class="frow">
+			<div class="g-bd5 f-cb">
+			    <div class="g-sd51 fside">
+			       左侧定宽
+			    </div>
+			    <div class="g-mn5 ">
+			        <div class="g-mn5c fmain">
+			           中间自适应
+			        </div>
+			    </div>
+			    <div class="g-sd52 fside">
+			        右侧定宽
+			    </div>
+			</div> 
+		</div>
+		<style>
+			/* 两列右侧自适应布局 */
+			.g-bd1{margin:0 0 10px;}
+			.g-sd1{position:relative;float:left;width:190px;margin-right:-190px;}
+			.g-mn1{float:right;width:100%;}
+			.g-mn1c{margin-left:200px;}
+		</style>
+		<div class="frow">
+			<div class="g-bd1 f-cb">
+			    <div class="g-sd1 fside">
+			       左侧定宽
+			    </div>
+			    <div class="g-mn1 ">
+			        <div class="g-mn1c fmain">
+			           右侧自适应
+			        </div>
+			    </div>
+			</div>
+		</div>
+		<style>
+			/* 两列左侧自适应布局 */
+			.g-bd2{margin:0 0 10px;}
+			.g-sd2{position:relative;float:right;width:230px;margin-left:-230px}
+			.g-mn2{float:left;width:100%;;}
+			.g-mn2c{margin-right:240px;}
+		</style>
+		<div class="frow">
+			<div class="g-bd2 f-cb">
+			    <div class="g-mn2 fmain">
+			        <div class="g-mn2c">
+			           左侧自适应
+			        </div>
+			    </div>
+			    <div class="g-sd2 fside">
+			        右侧定宽
+			    </div>
+			</div>
+
+		</div>
+		<div>position方式</div>
+		<div>
+			css的position 属性规定元素的定位类型。
+<pre>
+	css{
+		position:absolute/fixed/relative/static;
+		left:10px;
+		right:10px;
+		top:10px;
+		bottom:10px;
+		z-index:10;
+	}
+</pre>		
+		</div>
+		<div>
+			position定位可以结合margin。
+		</div>
+		<div style="position: relative;">
+			<div style="width:200px;height:30px; background-color: #B8CFEA; float: left;">200px</div>
+			<div style="position: absolute;top:0px;right:200px;left:200px;height:30px; background-color: #0F8E82;">position</div>
+			<div style="width:200px;height:30px; background-color: #B8CFEA; float: right;">200px</div>
+			
+		</div>
+		<div style="clear: both;"></div>
+		<div style="position: relative;">
+			<div style="width:200px;height:30px; background-color: #B8CFEA;">200px</div>
+			<div style="position: absolute;top:0px;left:200px;right:0px;height:30px; background-color: #0F8E82;">position</div>
+		</div>
+		<div style="position: relative;">
+			<div style="position: absolute;top:0px;right:200px;left:0px;height:30px; background-color: #0F8E82;">position</div>
+			<div style="width:200px;height:30px; background-color: #B8CFEA; float: right;">200px</div>
+			
+		</div>
+		<style>
+			.abs{
+				position: fixed;
+				background-color: #0F8E82;
+				top: 50%;
+				left: 50%;
+				width: 200px;
+				height: 200px;
+				line-height: 200px;
+				text-align: center;
+				color: #fff;
+			}
+		</style>
+		<div class="abs">这是position布局</div>
+	</body>
+</html>

@@ -1,0 +1,14 @@
+老雷css教程之认识css
+层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。
+简单来说css是用来控制和美化html页面的
+css可以通过三种方法引入
+1.通过标签style
+<div style="color:red;">认识css</div>
+2.通过style标签样式
+<style>
+	div{
+		font-size:36px;
+	}
+</style>
+3.通过link标签
+<link href="app.css" rel="stylesheet" />

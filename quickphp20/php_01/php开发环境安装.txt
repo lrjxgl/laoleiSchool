@@ -1,0 +1,11 @@
+老雷PHP开发教程
+
+phpstudy
+	https://www.xp.cn/
+vscode 或者 HbuilderX
+	https://code.visualstudio.com/
+	https://www.dcloud.io/
+mysql管理工具
+	http://localhost/phpmyadmin/
+chrome浏览器
+	百度chrome

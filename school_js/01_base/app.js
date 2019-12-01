@@ -1,0 +1,1 @@
+console.log("我通过src导入js");

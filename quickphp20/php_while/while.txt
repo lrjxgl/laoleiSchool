@@ -1,0 +1,21 @@
+老雷PHP课堂
+这节课我们来学习一下while,和do while语句，这两个也是循环语句
+
+一、while 
+语句的含意很简单，它告诉 PHP 只要 while 表达式的值为 TRUE就重复执行嵌套中的循环语句
+$i = 1;
+while ($i <= 10) {
+    echo $i++; 
+}
+$a=true;
+while($a){
+    echo "true";
+    break;
+}
+
+二、do-while 
+循环和 while循环非常相似，区别在于表达式的值是在每次循环结束时检查而不是开始时
+$i = 0;
+do {
+   echo $i;
+} while ($i > 0);

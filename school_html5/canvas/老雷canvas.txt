@@ -1,0 +1,64 @@
+老雷PHP全栈开发教程之canvas
+canvas是HMLT5用于绘图的画布，我们可以在canvas实现图像处理，游戏，视频动画。
+参考资料：http://www.w3school.com.cn/tags/html_ref_canvas.asp
+https://developer.mozilla.org/zh-CN/
+#基础
+	<canvas id="canvas" width=400 height="400"></canvas>
+	var canvas=document.getElementById("canvas");
+	var ctx=canvas.getContext("2d");
+#画图
+	可以画各种图形
+	##画线
+	ctx.beginPath();
+	ctx.moveTo(0,0);
+	ctx.lineTo(300,150);
+	ctx.stroke();
+	##画矩形
+	ctx.rect(20,20,150,100);
+	ctx.stroke();
+	##画圆形 弧形
+	ctx.beginPath();
+	ctx.arc(100,75,50,0,2*Math.PI);
+	ctx.stroke();
+#转换
+	ctx.scale()	缩放当前绘图至更大或更小
+	rotate()	旋转当前绘图
+	translate()	重新映射画布上的 (0,0) 位置
+	transform()	替换绘图的当前转换矩阵
+	setTransform()	将当前转换重置为单位矩阵。然后运行 transform()
+
+#canvas图像处理
+	缩放 裁剪 打水印 旋转灯
+	
+	context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+	img	规定要使用的图像、画布或视频。
+	sx	可选。开始剪切的 x 坐标位置。
+	sy	可选。开始剪切的 y 坐标位置。
+	swidth	可选。被剪切图像的宽度。
+	sheight	可选。被剪切图像的高度。
+	x	在画布上放置图像的 x 坐标位置。
+	y	在画布上放置图像的 y 坐标位置。
+	width	可选。要使用的图像的宽度。（伸展或缩小图像）
+	height	可选。要使用的图像的高度。（伸展或缩小图像）
+#图像保存 下载
+	var url=canvas.toDataURL("image/png");
+	function downLoad(url){
+		var oA = document.createElement("a");
+		oA.download = '';
+		oA.href = url;
+		document.body.appendChild(oA);
+		oA.click();
+		oA.remove(); 
+	}
+#视频
+	视频截图，视频小图播放
+	
+#小游戏
+	做html5小游戏
+	白鹭引擎
+	hilo
+
+课后练习
+	大家尝试画出个好看的图片
+	弄懂图片缩放 裁剪 做个头像裁剪。
+	

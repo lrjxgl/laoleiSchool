@@ -1,0 +1,107 @@
+老雷PHP课堂
+本节课程我们来学习下数据类型、变量和常量
+	学习的内容主要还是PHP手册，大家一定要去看手册。
+一、数据类型
+	PHP 支持 9 种原始数据类型
+	四种标量类型： 
+		•boolean（布尔型） 
+			true false
+			
+		•integer（整型） 
+			1 2 3 4
+		•float（浮点型，也称作 double) 
+			1.2 1.443
+		•string（字符串）
+			$a="字符串";
+			$b='字符串';
+			$c=$a.$b;
+			$d=$a."连接起来了";
+			$e="$a $b";
+	三种复合类型： 
+		•array（数组） 
+			PHP 中的数组实际上是一个有序映射。key=>value，键值对。
+			//key 0 1 2
+			$a=array("a","b","c");
+			//key a b c
+			$b=array(
+				"a"=>"aaa",
+				"b"=>"bbb",
+				"c"=>"ccc"
+			);
+			$b["a"];//aaa
+			$array = [
+				"foo" => "bar",
+				"bar" => "foo",
+			];
+			//多维数组 数组的值可以是数组，构成多维数组
+			$arr=array(
+				"a"=>array(
+					"b"=>array("a","b","c"),
+					"c"=>array("d","e")
+				),
+				"b"=>"bbb",
+				"c"=>"ccc"
+			);
+		•object（对象） 
+			对象是类的实例化
+		•callable（可调用）
+	最后是两种特殊类型： 
+		•resource（资源） 
+		•NULL（无类型） 
+二、变量
+	变量声明
+		PHP 中的变量用一个美元符号后面跟变量名来表示。变量名是区分大小写的
+		$_a=1;$b=2;
+	预定义变量
+		是PHP内置的变量
+		$GLOBALS 引用全局作用域中可用的全部变量
+		$_SERVER 服务器和执行环境信息
+		$_GET http GET
+		$_POST http POST
+		$_FILES HTTP 文件上传变量
+		$_REQUEST 默认情况下包含了 $_GET，$_POST和 $_COOKIE 的数组。
+		$_SESSION 
+		$_COOKIE HTTP Cookies
+	变量范围
+		普通变量 $a=1;
+		global 全局变量
+		$a=1;
+		function bb(){
+			global $a;
+			$a=2;
+		}
+		bb();
+		echo $a;
+	可变变量
+		$a="b";
+		$b=1;
+		echo $$a;
+		
+三、常量
+	常量是一个简单值的标识符，通常大写，全局可以使用，只能定义一次不可修改。
+	定义常量 
+	define("CONSTANT", "Hello world.");
+	if(!defined("CONSTANT")){
+		define("CONSTANT", "Hello world.");		
+	}
+	echo CONSTANT;
+课后练习
+	1.定义一个变量a值为hello,定义一个变量b值为world.定义变量c为a和b的连接，变量d为a和b和字符串"我开始学习啦"连接，输出c和d。
+	
+	2.定义一个一维数组，显示一条留言信息，内容为
+		主题 => 我要学PHP
+		内容 => 应该怎么学
+		昵称 => 老雷
+		电话 => 15985840591
+	2.定义一个多维数组，显示多个留言记录
+		0=>	主题 => 我要学PHP
+			内容 => 应该怎么学
+			昵称 => 老雷
+			电话 => 15985840591
+		1=>	主题 => 我要学PHP
+			内容 => 应该怎么学
+			昵称 => 老雷
+			电话 => 15985840591	
+			
+		
+	

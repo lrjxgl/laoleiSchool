@@ -1,0 +1,74 @@
+老雷PHP课堂
+本节课我们了解下mysqli扩展及几个sql。
+一、常用sql curd
+CREATE TABLE `sky_guest` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT '' COMMENT '主题',
+  `userid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
+  `catid` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '类型',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '状态',
+  `telephone` varchar(15) NOT NULL DEFAULT '',
+  `email` varchar(50) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `qq` varchar(15) NOT NULL DEFAULT '' COMMENT 'QQ',
+  `createtime` datetime NOT NULL DEFAULT '2019-01-17 08:08:01' COMMENT '留言时间',
+  `content` text COMMENT '留言内容',
+  `reply_content` text COMMENT '回复内容',
+  `reply_time` datetime NOT NULL DEFAULT '2019-01-17 08:08:01' COMMENT '回复时间',
+  `nickname` varchar(16) NOT NULL DEFAULT '',
+  `money` decimal(33,6) unsigned NOT NULL DEFAULT '0.000000',
+  PRIMARY KEY (`id`),
+  KEY `catid` (`catid`),
+  KEY `userid` (`userid`,`id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8 COMMENT='留言板';
+//插入数据
+insert into guest set title='这是标题',content='这是内容',nickname='昵称'
+//更新数据
+update guest set title='这是修改过的标签' where id=2
+//删除数据
+delete from guest where id=1 
+//查询
+select id,title,content from guest limit 10
+select * from guest where id=2
+二、mysqli扩展
+class mysqli{
+	
+}
+//数据库连接
+$mysqli = new mysqli("localhost", "my_user", "my_password", "world");
+//数据库连接错误号码
+$mysqli->connect_errno
+//数据库连接错误内容
+$mysqli->connect_error
+//设置编码
+$mysqli->set_charset("utf8mb4")) 
+//执行sql语句
+$result=$mysqli->query($sql);
+//设置结果类型 返回一行的数据
+//MYSQLI_ASSOC, MYSQLI_NUM, or MYSQLI_BOTH. 
+ $result->fetch_array(MYSQLI_NUM);
+ $list=array();
+ while($rs=$result->fetch_arrray(MYSQLI_ASSOC)){
+	 $list[]=$rs;
+ }
+ //执行sql错误内容
+$mysqli->error
+//关闭连接
+$mysqli->close();
+//结果记录数
+$result->num_rows
+//关闭结果
+$result->close();
+
+#课后练习 
+实现一个db类
+方法
+	__construct 连接数据库 
+	query 执行sql
+	getRow 获取一行
+	getOne 获取一个字段
+	getCols 获取一列
+	getAll 获取多列
+	insert 插入数据并返回自增id
+	delete 删除数据
+	update 更新数据
+	

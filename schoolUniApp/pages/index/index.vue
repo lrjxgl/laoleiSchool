@@ -32,7 +32,7 @@
 			getPage:function(){
 				var that=this;
 				this.comm.get({
-					url:"/wxapp.php",
+					url:"/laoleiSchool/school_php/wxapp.php",
 					success:function(res){
 						that.list=res.data.list;
 					}

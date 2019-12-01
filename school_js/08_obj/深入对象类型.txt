@@ -1,0 +1,27 @@
+老雷JavaScript基础教程之深入学习对象类型
+一、定义对象
+{
+	k:v
+}
+var obj={
+	a:123,
+	b:"ccc",
+	d:[1,2,3],
+	e:{},
+	f:false,
+	fa:function(){
+		return this.a;
+	},
+	fb:function(){
+		var that=this;
+		setTimeout(function(){
+			console.log(that.b);
+		},100);
+	}
+}
+二、扩展属性
+obj.num=123;
+obj["xxx"]=234;
+三、访问属性
+obj.num;
+obj.fa();

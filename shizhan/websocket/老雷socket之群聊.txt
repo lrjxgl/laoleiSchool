@@ -1,0 +1,33 @@
+老雷socket编程之群聊开发
+	
+	群聊就是一个聊天室
+	
+	一、群的管理
+		
+	二、聊天室服务端
+		function onMessage($client_id,$msg){
+			//登录认证
+			if(!$_SESSION["user"]){
+				$this->login();
+			}else{
+				//认证是否有群的权限
+				if(!appGroupAccess()){
+					//无权限就错误
+					$this->error();
+				}else{
+					//socket 入群
+					if(!inGroup()){
+						joinGroup();
+					}else{
+						sendGroup();
+					}
+				}
+			}
+		}
+	三、群消息
+		服务端 
+			群消息可以保存完整的，也可以保存最近的
+			
+		客户端 
+			群消息一般都保存本地，也可以保存服务器
+			对于客户端 如果是离线客户 不一定要所有群消息到达，我们可以最近的一段时间的消息拉取就好

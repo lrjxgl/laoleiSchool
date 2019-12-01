@@ -1,0 +1,30 @@
+老雷JavaScript基础教程之函数
+函数是一个功能模块的集合，方便多次调用
+一、函数定义
+
+function add(a,b){
+	return a+b;
+}
+console.log(add(3,5))
+
+var minus=function(a,b){
+	return a-b;
+}
+console.log(minus(7,2));
+
+二、变量作用域
+1.不在任何函数内定义的变量就具有全局作用域。实际上，JavaScript默认有一个全局对象window，全局作用域的变量实际上被绑定到window的一个属性。
+2.函数外的变量 会作用到函数内
+var a;
+window.a;
+
+function fa(){
+	 var b;
+	 //未声明的变量 会被绑定为window属性 成为全局变量
+	// c="超级变量";
+	 var fd=function(){
+		 b=2;
+	 }
+	 fd();
+	 console.log(b);
+ }

@@ -16,6 +16,7 @@ class SocketService
             if(!empty($port)) {
                 $this->port = $port;
             }
+			$this->host="tcp://$address:$port";
     }
 	
 	public function onConnect($client_id){
@@ -65,7 +66,8 @@ class SocketService
 						continue;
                     }
                     $line = trim(stream_socket_recvfrom($newClient, 1024));
-                    $this->handshaking($newClient, $line);
+                    //握手
+					$this->handshaking($newClient, $line);
 					$this->maxid++;
                     $this->clients[$this->maxid] = $newClient;
                     $this->onConnect($this->maxid);
@@ -77,6 +79,7 @@ class SocketService
 						unset($this->clients[$key]);
 						$this->onClose($key);
 					}else{
+						//解密
 						$msg = $this->decode($res);
 						$this->onMessage($key,$msg);
 					}
@@ -154,7 +157,7 @@ class SocketService
  
     
 	/**
-	*加密消息
+	*打包消息
 	**/
      public function encode($buffer) {
 		$first_byte="\x81";

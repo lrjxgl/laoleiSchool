@@ -1,8 +1,11 @@
 
 module.exports={
-  apiHost:"http://school.com/school_php/",
+  apiHost:"http://school.com/laoleiSchool/school_php/",
   get:function(ops){
     var callback=ops.success;
+		if(ops.url.indexOf("?") < 0){
+			ops.url+="?";
+		}
     wx.request({
       url: ops.url + "&access_token=" + this.get_access_token(),
       success:function(res){
@@ -12,6 +15,9 @@ module.exports={
   },
   post:function(ops){
     var callback = ops.success;
+		if(ops.url.indexOf("?") < 0){
+			ops.url+="?";
+		}
     wx.request({
       url: ops.url+"&access_token="+this.get_access_token(),
       method:"POST",

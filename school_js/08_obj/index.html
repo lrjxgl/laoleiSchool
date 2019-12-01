@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var obj={
+				num:123,
+				price:234,
+				total:function(){
+					return this.num*this.price;
+				},
+				stat:function(){
+					var that=this;
+					setTimeout(function(){
+						console.log("商品数量："+that.price+",商品价格："+that.price+",总价："+that.total());
+					},100)
+					return true;
+				}
+			}
+			obj.num=123;
+			obj["xxx"]=234;
+			obj.ss=function(){
+				console.log("sss")
+			}
+			obj["xx"]="xxx";
+			console.log("总价="+obj.total())
+			console.log(obj.stat())
+			console.log(obj);
+		
+		</script>
+	</body>
+</html>

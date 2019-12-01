@@ -1,0 +1,14 @@
+老雷JavaScript基础教程
+1.js基本语法 
+2.变量及类型
+3.运算符 
+4.条件语句 
+		if条件执行 if else if else 
+		switch条件switch case break   
+5.for foreach循环语句   
+		for循环 for break continue; 
+		foreach循环foreach break continue Array 
+6.while循环条件 whie do-while break continue  
+7.函数function 
+8.深入理解对象
+9.深入理解数组

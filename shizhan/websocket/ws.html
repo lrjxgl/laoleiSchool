@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var ws=new WebSocket("ws://127.0.0.1:9000");
+			ws.onopen=function(){
+				console.log("open")
+			}
+			ws.onmessage=function(e){
+				console.log(e)
+			}
+		</script>
+	</body>
+</html>

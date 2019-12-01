@@ -1,0 +1,121 @@
+老雷linux之linux软件安装及anmpv安装
+linux软件常用安装有两种，一种是安装包 centos yum rpm，一种是源码编译。
+一、yum
+	yum install php
+	yum remove php
+	yum list php*
+	#配置阿里云源
+		yum install wget 
+		mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+		wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+		yum clean all
+		yum makecache
+二、rpm
+	1.安装
+	rpm –i php.rpm
+	rpm –ivh php.rpm
+	rpm –Uvh php.rpm 升级最新安装
+	rpm参数 参数说明
+　　        -i    安装软件
+　　       -t     测试安装，不是真的安装
+　　       -p   显示安装进度
+　　       -f     忽略任何错误
+　　       -U   升级安装
+　　       -v    检测套件是否正确安装
+		   -h或--hash：套件安装时列出标记；
+	2.卸载
+		rpm –e php
+三、源码安装卸载	
+	1.编译安装
+	wget php.zip
+	unizp php.zip
+	cd php
+	./configure 
+	make && make install
+	
+	2.卸载
+	cd php
+	make clean; 
+	make uninstall;
+
+四、安装常用服务器软件
+	1.安装php 
+		php7.x版本yum源
+			https://webtatic.com/
+		#安装yum源
+		yum install -y epel-release
+		rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+		#安装PHP
+		yum list php72w*
+		yum install -y php72w php72w-fpm php72w-cli php72w-common php72w-devel php72w-gd php72w-pdo php72w-mysqlnd php72w-mbstring 
+		php -v
+	2.nginx
+		#安装yum源	
+		rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+		#安装
+		yum install -y nginx
+		#启动nginx
+		systemctl start nginx.service
+		systemctl stop nginx.service
+		systemctl restart nginx.service
+		systemctl reload nginx.service
+		#设置开机自动运行
+		systemctl enable nginx.service
+		firewall-cmd --zone=public --add-port=80/tcp --permanent
+		firewall-cmd --zone=public --add-port=443/tcp --permanent 
+		firewall-cmd --reload
+	3.apache
+		yum install -y httpd httpd-devel
+		systemctl enable httpd.service
+		安装完成之后我们要修改端口
+		vi /etc/httpd/conf/httpd.conf
+		将80端口改为8080端口,并开放端口
+		firewall-cmd --zone=public --add-port=8080/tcp --permanent
+		firewall-cmd --reload
+	4.安装mysql数据库，社区版mariadb
+		yum -y install mariadb mariadb-server
+		systemctl enable mariadb.service
+		systemctl start mariadb
+		#设置mysql root密码
+		mysql
+		use mysql
+		update user set password=password("123") where user='root';
+		flush privileges;
+		#添加端口
+		firewall-cmd --zone=public --add-port=3306/tcp --permanent
+		firewall-cmd --reload
+	5.安装vsftp
+		yum install -y vsftpd
+		systemctl enable vsftpd.service
+		systemctl start vsftpd
+		#添加端口
+		firewall-cmd --permanent --zone=public --add-service=ftp
+		firewall-cmd --reload
+		#创建ftp目录
+		mkdir /var/www/html/laoleischool
+		useradd -d /var/www/html/laoleischool -s /sbin/nologin -g ftp ftpwww
+		passwd ftpwww
+		filezilla 开源免费
+		#配置ftp
+		vi /etc/vsftpd/vsftpd.conf
+		userlist_enable=NO
+	　　anonymous_enable=NO
+		#全部限制当前目录 禁止跳转
+	　　chroot_local_user=YES 
+		#chroot_list_enable=YES
+		# (default follows)
+		#chroot_list_file=/etc/vsftpd/chroot_list
+		#配置ftp selinux
+		getsebool -a|grep ftp
+		setsebool allow_ftpd_full_access=on
+		
+基本网站服务：lnamp+vsftp
+nginx apache
+
+课后练习
+	学会yum的基本使用
+	学会rpm的基本使用 查看更多命令
+	源码安装的使用 
+	nginx apache mysql php vsftp 安装
+	
+		

@@ -1,0 +1,34 @@
+老雷PHP全栈开发之pcntl多进程控制
+pcntl的进程控制支持实现了Unix方式的进程创建, 程序执行, 信号处理以及进程的中断。
+PCNTL现在使用了ticks作为信号处理的回调机制
+参考 https://blog.csdn.net/huyanping/article/details/18280839
+declare
+	declare 结构用来设定一段代码的执行指令
+	Ticks Tick（时钟周期）是一个在 declare 代码段中解释器每执行 N 条可计时的低级语句就会发生的事件
+pcntl_fork
+	在当前进程当前位置产生分支（子进程）。译注：fork是创建了一个子进程，父进程和子进程 都从fork的位置开始向下继续执行，不同的是父进程执行过程中，得到的fork返回值为子进程 号，而子进程得到的是0。
+
+pcntl_signal 
+	安装一个信号处理器
+	SIGTERM 
+		程序结束(terminate)信号, 与SIGKILL不同的是该信号可以被阻塞和处理. 通常用来要求程序自己正常退出
+	SIGHUP 
+		信号在用户终端连接(正常或非正常)结束时发出, 通常是在终端的控制进程结束时, 通知同一session内的各个作业,  这时它们与控制终端 不再关联. 
+	SIGUSR1 
+		用户定义信号1
+	SIGCHLD 
+		子进程结束时, 父进程会收到这个信号. 
+pcntl_signal_dispatch 
+	调用等待信号的处理器
+pcntl_wait 
+	等待或返回fork的子进程状态
+pcntl_waitpid
+	挂起当前进程的执行直到参数pid指定的进程号的进程退出， 或接收到一个信号要求中断当前进程或调用一个信号处理函数
+		
+posix_setsid
+posix_setuid
+posix_setgid
+posix_getpid
+posix_getppid
+getmypid		
+		

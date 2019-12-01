@@ -1,0 +1,68 @@
+老雷php全栈开发教程之全文索引elasticsearch
+
+在我们使用mysql查询数据的时候，有些查询很难用到索引，这会导致我们数据库性能下降，
+所以我们会使用全文搜索引擎来代替我们的复杂索引。
+
+ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。
+elasticsearch是目前最流行的全文索引擎，它不只用在我们的全文搜索，还可以使用其它的数据分析。
+Elasticsearch是与名为Logstash的数据收集和日志解析引擎以及名为Kibana的分析和可视化平台一起开发的。
+这三个产品被设计成一个集成解决方案，称为“Elastic Stack”（以前称为“ELK stack”）。
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html
+
+一.安装elasticsearch
+	先下载安装java
+	下载es https://www.elastic.co/cn/downloads/elasticsearch
+	解压缩即可使用
+	
+二、安装插件 中文分词
+
+.\elasticsearch-plugin install file:///G:\elasticsearch-7.2.0\down\elasticsearch-analysis-ik-7.2.0.zip
+
+
+三、索引管理 curd
+	https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-exists.html
+	curl -X PUT 'http://127.0.0.1:9200/article' -d '
+	{
+    "settings" : {
+        "number_of_shards" : 1
+    },
+    "mappings" : {
+        "properties" : {
+            "title" : { 
+				"type" : "text",
+				"analyzer": "ik_max_word",
+				"search_analyzer": "ik_max_word"
+			},
+			"content" : { 
+				"type" : "text",
+				"analyzer": "ik_max_word",
+				"search_analyzer": "ik_max_word"
+			}
+        }
+    }
+}'
+
+四、文档管理 curd
+	post("article/_doc",$data)
+	put("article/_doc/$id",$data)
+	get("article/_doc/$id");
+	delete("article/_doc/$id")
+五、查询
+	https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html
+	$query=array(
+		"query"=>array(
+			"match"=>array(
+				"title"=>"中国"
+			)
+		),
+		"from"=> 30,
+		"size"=> 30
+	);
+	
+	$res=$es->search("article",$query);
+	
+	课后练习
+	
+	es安装 es-ik分词安装 创建索引 mysql表  编辑文档 简单查询
+	

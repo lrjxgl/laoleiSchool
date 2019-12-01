@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>老雷在线培训</title>
+		<style>
+			body{
+				padding: 0;
+				margin: 0;
+			}
+			div{
+				display: flex;
+				flex-direction: column;
+			}
+			.flex{
+				display: flex;
+				flex-direction: row;
+			}
+			.left,.right{
+				background-color: #b8cfea;
+				padding: 10px;
+			}
+			.left{
+				width: 220px;
+			}
+			.right{
+				width: 320px;
+			}
+			.main{
+				flex:1;
+			}
+			.asklist-item{
+				margin-bottom: 5px;
+			}
+			.cl2{
+				color: #646464;
+			}
+			.f14{
+				font-size: 14px;
+			}
+			.flex-1{
+				flex: 1;
+			}
+			.btn{
+				padding: 3px 6px;
+				    background-color: #0f8e82;
+				    color: #fff;
+					cursor: pointer;
+					margin-right: 5px;
+			}
+			.editor{
+				height: 60px;
+				margin-bottom: 5px;
+			}
+			.menulist{
+				margin-bottom: 5px;
+			}
+			.menulist .aitem{
+				color: #646464;
+				margin-bottom: 5px;
+				cursor: pointer;
+			}
+			.menu-hd{
+				font-size: 16px;
+				color: #333;
+			}
+		</style>
+	</head>
+	<body>
+		<div>在线教育</div>
+		<div class="flex">
+			<div class="left">
+				<div>课程目录</div>
+				<div class="menulist">
+					<div class="menu-hd">html课程</div>
+					<div class="aitem">认识html5</div>
+					<div class="aitem">认识常见的html标签</div>
+					<div class="aitem">认识常见的css样式</div>					
+				</div>
+				<div class="menulist">
+					<div class="menu-hd">js课程</div>
+					<div class="aitem">JavaScript</div>
+				</div>
+			</div>
+			<div class="main">
+				<video style="width: 100%;" controls src="https://shuxianglai.oss-cn-hangzhou.aliyuncs.com/video/2019/06/16/1560641382diqldd2u2n93meev3o3jcu0rdn1.1%E8%AE%A4%E8%AF%86html5.mp4"></video>
+			</div>
+			<div class="right">
+				<div class="asklist">
+					<div class="asklist-item">
+						<div class="cl2 f14">问题</div>
+						<div class="cl2 f14">回答</div>
+					</div>
+					<div class="asklist-item">
+						<div>问题</div>
+						<div>回答</div>
+					</div>
+					<div class="asklist-item">
+						<div>问题</div>
+						<div>回答</div>
+					</div>
+					<div >
+						<textarea class="editor"></textarea>
+						<div class="flex">
+							<div class="btn">发表提问</div>
+							<div class="btn">记录笔记</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

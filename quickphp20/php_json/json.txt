@@ -1,0 +1,26 @@
+老雷PHP教程
+json是一种轻量级的数据交换格式
+值可以是对象、数组、数字、字符串或者三个字面值(false、null、true)中的一个
+{
+	"key":"val",
+	"num":123,
+	"bool":true,
+	"key2":[
+		"a",
+		{"a":"a","b":"b"}
+	]
+}
+
+$data=array(
+	"id"=>1,
+	"title"=>"文章详情"
+);
+//编码
+$json=json_encode($data);
+//解码成对象
+$obj=json_decode($json);
+$obj->id;
+//解码成数组
+$arr=json_decode($json,true);
+$arr["id"];
+

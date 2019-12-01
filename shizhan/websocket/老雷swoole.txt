@@ -1,0 +1,31 @@
+老雷socket编程之swoole
+Swoole：面向生产环境的 PHP 异步网络通信引擎，使 PHP 开发人员可以编写高性能的异步并发 TCP、UDP、Unix Socket、HTTP，WebSocket 服务。
+1.安装
+1.搭好centos7虚拟机
+2.安装php7.2
+3.安装swoole
+	git clone https://gitee.com/swoole/swoole.git
+	cd swoole
+	phpize
+	./configure
+	make && make install
+4.配置php
+	cd /etc/php.d
+	vi swoole.ini
+	extension=swoole.so
+	
+5.服务server
+	htpp tcp udp websocket 
+6.定时器 timer
+
+7.协程Coroutine
+	协程可以理解为纯用户态的线程，其通过协作而不是抢占来进行切换。
+	相对于进程或者线程，协程所有的操作都可以在用户态完成，创建和切换的消耗更低。
+	swoole 协程特点，异步高性能，简单。
+8.异步任务	
+	在Server程序中如果需要执行很耗时的操作，比如一个聊天服务器发送广播，Web服务器中发送邮件。如果直接去执行这些函数就会阻塞当前进程，导致服务器响应变慢。
+	Swoole提供了异步任务处理的功能，可以投递一个异步任务到TaskWorker进程池中执行，不影响当前请求的处理速度。
+	
+课后练习
+	用swoole实现私聊、群聊功能。
+	

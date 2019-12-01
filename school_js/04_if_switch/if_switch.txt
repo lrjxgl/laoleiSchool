@@ -1,0 +1,38 @@
+老雷JavaScript基础教程之if_switch
+//if基于不同的条件来执行不同的动作
+var a=6;
+if(){
+	
+}else if(){
+	
+}else{
+	
+}
+
+if(a>9){
+	console.log("大于9");
+}else if(a>6){
+	console.log("大于6");
+}else if(a>6){
+	console.log("大于6");
+}else{
+	console.log("小于9");
+}
+if(a>9){
+	console.log("大于9");
+}else{
+	
+}
+//switch 语句用于基于不同的条件来执行不同的动作
+switch(a){
+	case 1:
+		console.log("a=1");
+		break;
+	case 7:
+		console.log("a=7");
+		break;
+	default:
+		console.log("a不等于1或者7");
+		break;
+		
+}

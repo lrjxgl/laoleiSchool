@@ -1,0 +1,79 @@
+老雷PHP课堂
+今天我们来讲解一下 for跟foreach
+一、for 是一个循环语句
+for  break continue
+从 $i=0开始，到$i=10结束，每次循环$i+1
+for ($i = 1; $i <= 10; $i++) {
+    echo $i;
+}
+for ($i = 10; $i >0; $i--) {
+    echo $i;
+}
+//for可以嵌套
+for ($i = 1; $i <= 10; $i++) {
+    for ($j = 1; $j <= 10; $j++) {
+		continue;
+        echo $i.$j;
+    }
+	if($i==5) break;
+}
+//
+/*
+ * 此数组将在遍历的过程中改变其中某些单元的值
+ */
+$people = Array(
+	Array('name' => 'Kalle', 'salt' => 856412), 
+	Array('name' => 'Pierre', 'salt' => 215863)
+);
+$len=count($people);
+for($i = 0; $i < $len; ++$i)
+{
+    $people[$i]["k"] = "第".$i."个";
+}
+
+二、foreach仅能够应用于数组和对象
+语法：
+	foreach (array_expression as $value)
+		statement
+	foreach (array_expression as $key => $value)
+		statement
+//例子
+$people = Array(
+	Array('name' => 'Kalle', 'salt' => 856412), 
+	Array('name' => 'Pierre', 'salt' => 215863)
+);
+foreach($people as $key=>$val){
+	echo $val["name"];
+}
+foreach($people as $key=>$val):
+	echo $val["name"];
+endforeach;
+课后练习
+1.请使用for输出1到100数字
+2.使用for生成一个二维数组如
+array(
+	array(1,3,5,7,9),
+	array(2,4,6,8,10)
+);
+3.留言版列表是一个多维数组，每个项含 
+	id	 主题 	内容 			昵称 		电话
+	1  今天怎么样 今天很不错	老雷		15985840591
+	2  吃饭了吗 吃完了	老雷		15985840591
+	3  明天干什么 要考试	老雷		15985840591
+
+循环输出每一项的内容
+如
+<div>
+	<div>今天怎么样</div>，
+	<div>今天很不错</div>
+	<div>老雷</div>
+	<div>15985840591</div>
+</div>
+<div>
+	<div>吃饭了吗</div>，
+	<div>吃完了</div>
+	<div>老雷</div>
+	<div>15985840591</div>
+</div>
+	
+	

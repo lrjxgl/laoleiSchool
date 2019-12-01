@@ -1,0 +1,17 @@
+html5是由html+css+js构成的
+
+	html标签		
+		<div></div>
+		<img />
+	css
+		<style>
+			.title{
+				font-size:16px;
+			}
+		</style>
+		<div class="title" style="color:red;"></div>
+	js
+		<script>
+			alert("很好");
+		</script>
+		<div onclick="alert('很好')"></div>

@@ -1,0 +1,43 @@
+﻿老雷linux教程之VirtualBox安装centos7
+https://www.virtualbox.org/
+
+1.新建虚拟电脑
+	1.选择 red hat 64 bit
+	2.内存 4G
+	3.硬盘 20G
+	4.启动虚拟机 选择系统光盘
+	5.选择语言
+	6.安装位置 磁盘分区
+	7.设置root密码
+	8.等待 安装成功
+2.centos7配置网络
+	1.网络 选择桥接网卡
+	2.安装完成后 我们的centos还不支持网络访问
+	可以输入命令dhclient，可以自动获取一个IP地址，再用命令ip addr查看IP。
+	或者
+	cd /etc/sysconfig/network-scripts/
+	Vi   ifcfg-enp0s3 
+	service network restart
+3.端口配置
+	#查看已开放端口
+	firewall-cmd --list-ports 
+	#增加端口
+	firewall-cmd --zone=public --add-port=22/tcp --permanent  
+	firewall-cmd --zone=public --add-port=80/tcp --permanent 
+	 firewall-cmd --zone=public --add-port=9000/tcp --permanent
+	 firewall-cmd --zone=public --add-port=9501/tcp --permanent  
+firewall-cmd --zone=public --add-port=8010/tcp --permanent  
+	命令含义:
+	–zone #作用域
+	–add-port=80/tcp #添加端口，格式为：端口/通讯协议
+	–permanent #永久生效，没有此参数重启后失效
+	#重启防火墙
+	firewall-cmd --reload
+4.使用xshell连接 centos
+	下载xshell安装 学生版的
+	
+课后练习
+	安装virtualBox
+	安装centos7
+	配置网络
+	安装xshell 创建centos7连接

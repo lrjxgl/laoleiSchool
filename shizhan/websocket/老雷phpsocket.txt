@@ -1,0 +1,39 @@
+老雷socket编程之PHP的socket扩展
+我们了解了常用的网络协议，今天我们来了解下socket服务。我们可以基于tcp和udp来实现我们的socket服务，
+包括tcp即时通讯，udp即时通讯，websocket服务，http服务等。
+我们可以通过一张图来了解socket的实现流程图。
+
+因为我们是使用PHP语言，所以我们先来了解一下PHP的socket扩展实现。
+PHP有两个socket的扩展 sockets和streams 。
+
+sockets
+	socket_create(AF_INET, SOCK_STREAM, SOL_TCP)
+	socket_write
+	socket_read
+	socket_close
+	客户端
+	socket_connect($socket, $address, $service_port)；
+	
+	服务端
+	socket_bind($sock, $address, $port)
+	socket_listen($sock)
+	socket_accept
+	
+Streams
+	客户端
+		stream_socket_client
+		fwrite
+		fread
+		fclose($fp);
+	服务端
+		stream_socket_server
+		stream_set_blocking
+		stream_select
+		stream_socket_accept conn
+		stream_socket_recvfrom
+		stream_socket_sendto
+		stream_socket_shutdown
+		
+
+课后练习
+	使用sockets和streams扩展实现客户端跟服务端的功能。

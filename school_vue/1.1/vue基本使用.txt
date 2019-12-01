@@ -1,5 +1,6 @@
 老雷PHP全栈开发教程之Vue基础教程
 跟着老雷学PHP，快速成为合格的PHPer
+Vue是一套用于构建用户界面的渐进式框架,Vue 的核心库只关注视图层，Vue通过数据驱动构建ui界面。
 https://cn.vuejs.org/v2/guide/installation.html
 
 1.生命周期

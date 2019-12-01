@@ -1,0 +1,111 @@
+老雷PHP课堂
+PHP最初是面向过程语言，有很多内置函数，比如处理字符串、处理数组的函数等。
+除了内置函数，我们还需要了解如何自定义函数，函数一个可以实现功能复用的代买块。
+函数是一组功能的集合，可以复用。
+一、函数定义
+
+	function myFun($a,$b=2){
+		//echo "fun";
+		return $a*$b;
+	}
+	$c=myFun(1,2);
+	echo $c;
+二、函数的参数
+	普通变量
+		function fun($a){
+			
+		}
+	默认值得变量	
+		myFun($a,$b=2)
+	引用变量
+		function fun(&$a){
+			
+		}
+	可变数量的参数列表
+		PHP 在用户自定义函数中支持可变数量的参数列表。在 PHP 5.6 及以上的版本中，由 ... 语法实现；在 PHP 5.5 及更早版本中，使用函数 func_num_args()，func_get_arg()，和 func_get_args() 。
+		<?php
+		function sum(...$numbers) {
+		    $acc = 0;
+		    foreach ($numbers as $n) {
+		        $acc += $n;
+		    }
+		    return $acc;
+		}
+		function sum() {
+		    $acc = 0;
+		    foreach (func_get_args() as $n) {
+		        $acc += $n;
+		    }
+		    return $acc;
+		}
+		echo sum(1, 2, 3, 4);
+		?> 
+三、返回值
+		return 可以返回包括数组和对象的任意类型。返回语句会立即中止函数的运行，并且将控制权交回调用该函数的代码行。
+		返回值可以返回各类数类型
+四、可变函数
+		PHP 支持可变函数的概念。这意味着如果一个变量名后有圆括号，PHP 将寻找与变量的值同名的函数，并且尝试执行它。
+	<?php	
+		function foo() {
+		    echo "In foo()<br />\n";
+		}
+		$func = 'foo';
+		$func(); 
+	?>
+	
+五、匿名函数
+		匿名函数也叫闭包函数，允许 临时创建一个没有指定名称的函数。最经常用作回调函数（callback）参数的值。
+		<?php
+			echo preg_replace_callback('~-([a-z])~', function ($match) {
+			    return strtoupper($match[1]);
+			}, 'hello-world');
+			$greet = function($name)
+			{
+			    printf("Hello %s\r\n", $name);
+			};			
+			$greet('World');
+			$message = 'world';
+			$example = function ($arg) use ($message) {
+			    var_dump($arg . ' ' . $message);
+			};
+			$example("hello");
+		?>
+课后练习
+1.实现一个函数，比较a,b,c的大小，按大小顺序返回三个数字。
+
+2.实现一个函数，计算a+b*c-d，并计算结果谁大;
+	假设 a=1，b=6,c=3, d=22;
+	假设 a=3，b=2,c=3, d=42;
+
+3.有a,b,c三个人玩骰子比大小，谁的点数大就谁赢，一样的平手。
+	他们玩了三次，a、b、c分别是
+	1,2,3
+	6，3，5
+	4，4，5
+	请写一个函数判断每次谁是赢家。		
+4.留言板页面  guest.php 
+		1.首页 	  index或者其他非以下条件
+		2.添加页	  add
+		3.保存页面 save
+		4.删除页面 delete
+		5.回复页面 reply
+		6.回复保存 reply_save
+	要求输入对应的参数输出对应的名称
+		如
+		guest.php?a=add 输出添加页
+		guest.php?a=save 输出保存页面
+		其他的不在以上的页面 则输出 首页
+		获取参数a的值
+		$a=isset($_GET["a"])?$_GET["a"]:"";
+		if($a=='add'){
+			
+		}
+使用 可变函数实现 留言板页面切换	
+$a="add";
+$a();
+if(function_exists($a)){
+	$a();
+}
+function add(){
+	echo "add";
+}	

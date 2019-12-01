@@ -1,0 +1,42 @@
+Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。
+
+我们可以用Composer方便安装PHP库。
+
+安装composer
+
+linux
+
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+window
+
+下载并且运行 Composer-Setup.exe，它将安装最新版本的 Composer ，并设置好系统的环境变量，因此你可以在任何目录下直接使用 composer 命令。
+
+Packages
+
+https://packagist.org/ 
+
+中文镜像 https://pkg.phpcomposer.com/ 
+
+安装插件
+
+基于composer.json安装
+
+composer install
+composer update
+
+
+{
+    "require": {
+        "monolog/monolog": "1.0.*"
+    }
+}
+基于命令
+
+composer create-project laravel/laravel
+
+
+
+
+
+

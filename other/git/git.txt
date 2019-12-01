@@ -1,0 +1,66 @@
+老雷PHP全栈开发教程之git的使用
+git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。
+我们要求大家都要去学会使用git。这边我们现给大家简单介绍git的使用。
+git的常用网站有两个：
+http://github.com/ 全球最大的码农社交网站
+https://gitee.com/ 国内的
+一、我们要求大家使用github搭建我们的整个课程的日志记录。
+下载https://desktop.github.com/ ，然后创建school项目，传到github上面去。
+二、要求大家学会git的基本使用
+参考教程 https://www.liaoxuefeng.com/wiki/896043488029600
+下载安装 https://git-scm.com/
+一、git 创建
+cd E:/laoleischool/ & E:
+E:
+mkdir hello
+cd hello 
+git init
+//克隆远程地址
+git clone https://xxx.git
+二、添加文件
+git add hello.txt
+git add -A 提交所有变化
+//提交修改
+git commit -m "hello"
+
+三、版本管理
+git log  查看版本记录
+git reflog 查看命令历史
+git log --pretty=oneline 美化记录
+//上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+git reset --hard HEAD^ 返回上一版  
+由于window cmd 换行问题
+git reset --hard "HEAD^"
+
+git reset --hard 1094a 返到置顶版本
+
+
+git status 查看状态
+
+git diff HEAD -- readme.txt 比较
+//未add
+git checkout -- readme.txt 撤回修改
+//已add
+git reset HEAD hi.txt 返回上一版
+git checkout -- readme.txt 撤回修改
+
+git rm test.txt //删除
+
+四、分支管理
+	 查看分支：git branch
+
+	创建分支：git branch <name>
+
+	切换分支：git checkout <name>
+
+	创建+切换分支：git checkout -b <name>
+
+	合并某分支到当前分支：git merge <name>
+
+	删除分支：git branch -d <name>
+
+ 
+
+课后练习
+	要求安装github的桌面软件，并且创建我们课程学习的项目school，所有的学习的资料到放到school.
+	

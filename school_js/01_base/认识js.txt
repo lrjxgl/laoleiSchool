@@ -1,0 +1,12 @@
+老雷Js基础教程之认识js
+一、js是在浏览器中运行的脚本代码
+二、js可以通过三种方式引入
+1.通过标签事件
+<div onclick="alert('我点了一下')">点我</div>
+2.通过script标签引入
+<script src="app.js"></script>
+3.通过script标签直接写
+<script>
+	console.log("我Q是在页面上的代码");
+</script>
+三、通过console.log进行日志调试

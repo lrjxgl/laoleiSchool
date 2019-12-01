@@ -1,4 +1,4 @@
-老雷PHP全栈开发教程之mysql读写分离
+老雷PHP全栈开发教程之mysql读写分离中间件
 
 数据库中间件
 	kingshard https://github.com/flike/kingshard
@@ -9,7 +9,7 @@
 	MySQL Router  mysql官方
 	ProxySQL
 	DBProxy https://github.com/Meituan-Dianping/DBProxy
-	我们今天来学习使用kingshard
+我们今天来学习使用kingshard
 	windows安装文档
 	https://github.com/flike/kingshard/wiki/%E5%9C%A8window%E4%B8%8B%E5%AE%89%E8%A3%85kingshard
 	下载1.5版本的 安装完成 配置

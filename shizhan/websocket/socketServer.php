@@ -18,7 +18,17 @@ class SocketService
                 $this->port = $port;
             }
     }
-	
+	public function bindUid($cliend_id,$uid){
+		$this->uids[$uid][$cliend_id]=$cliend_id;
+	}
+	public function sendToUid($uid,$msg){
+		//
+		$clients=$this->getClientsByUid($uid);
+		
+	}
+	public function addGroup($groupid,$name){
+		
+	}
 	public function joinGroup($cliend_id,$groupid){
 		$this->groupClients[$groupid][$cliend_id]=$cliend_id;
 	}
@@ -70,7 +80,7 @@ class SocketService
             throw new Exception("failed to create socket: ".socket_strerror($sock)."\n");
         }
         socket_bind($sock, $this->address, $this->port);
-        socket_listen($sock, $this->port);
+        socket_listen($sock);
         echo "listen on $this->address $this->port ... \n";
         $this->_sockets = $sock;
     }
@@ -182,7 +192,7 @@ class SocketService
  
     
 	/**
-	*加密消息
+	*打包数据
 	**/
     public function encode($buffer) {
 		$first_byte="\x81";

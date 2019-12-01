@@ -1,0 +1,82 @@
+﻿如何学习css?
+多看 多写  多模仿
+css是美化html用的，css包含很多内容，我只能把常用的一些css样式给你们列出来讲讲。
+具体的大家可以看看css手册。
+
+css选择器 
+	.a{}
+	.a .b{}
+	.a>.b{}
+	.a-b{}
+	.a .b .c{}
+	.a-b-c{}
+	
+常用css属性
+
+1.常用布局定位css
+	display：none | block | inline-block flex inline-flex
+	visibility：visible | hidden
+	overflow:hidden  | auto
+	position： relative | absolute | fixed 
+2.尺寸
+	width min-width max-width
+	height min-height max-height
+	尺寸单位 固定单位 10px 比例单位 100%。
+	 如：.a{width:100px; height:100px;}
+3.外补白 Margin 这是盒子外的
+	.margin{margin:10px 20px;}
+	css的方向css遵循上右下左
+		top right bottom left ;	
+	如：{margin:50px 40px 30px 20px;}
+	相关属性：[ margin-top ] || [ margin-right ] || [ margin-bottom ] || [ margin-left ]
+4.内补白 Padding 这是盒子内部的事
+	.padding{padding:10px;}
+	相关属性：[ padding-top ] || [ padding-right ] || [ padding-bottom ] || [ padding-left ]
+5.边框 Border 
+	.border{
+		border: 5px solid #000;
+	}
+	border：<line-width> || <line-style> || <color>
+	<line-width> = <length> | thin | medium | thick
+	<line-style> = none  dotted  solid 
+	相关属性：[ border-top ] || [ border-right ] || [ border-bottom ] || [ border-left ]
+6.背景 Background
+	.background{background:url(1.jpg) no-repeat 100%;}
+	.background-color{background-color:#ddd;}
+7.颜色
+	color{color:#f60;background-color:#f80;}
+	可以使用Color Name(颜色名称), HEX, RGB, RGBA, HSL, HSLA, transparent来指定color。 
+	.colorname p{color:green;}
+	.hex p{color:#ff0000;}
+	.rgb p{color:rgb(0,0,0);}
+	.rgba p{color:rgba(0,0,0,.5);}
+	.hsl p{color:hsl(240,50%,50%);}
+	.hsla p{color:hsla(240,50%,50%,.5);}
+	.transparent p{color:transparent;}
+8.字体 Font
+	font-size
+	font-family
+	font-weight
+	font-style：normal | italic | oblique
+9.文本 Text
+	word-break：normal | keep-all | break-all 字内换行
+	text-align：left | right | center 水平对齐
+	vertical-align： top | middle | bottom 垂直对齐
+	line-height 行高
+	text-decoration none | underline | overline | line-through | blink 
+
+10.flex布局
+	.flex{
+		display:flex;
+		flex-direction:row;
+	}
+	.flex-width-50{
+		width:50;
+	}
+	.flex-1{
+		flex:1;
+	}
+ 
+ 
+ 
+ 

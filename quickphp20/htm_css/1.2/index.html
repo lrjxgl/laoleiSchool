@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>常用html标签-老雷php全栈开发教程</title>
+		<style>
+			.table{
+				width: 100%;
+				border-collapse: collapse;
+				
+			}
+			.table td,.table th{
+				border: 1px solid #eee;
+				padding: 5px;
+			}
+			.mgb-10{
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div>参考 <a href="http://www.w3school.com.cn/html/index.asp" target="_blank">http://www.w3school.com.cn/html/index.asp</a>  </div>
+			<h3>布局文本</h3>
+			<div>
+				<div>
+					最常用的布局标签div<br>
+					任何页面布局都可以使用div+css实现
+					<div style="font-size: 16px; color: red;"  class="这是class"  id="这是id" title="鼠标提示" data-title="这是值">属性说明</div>
+					
+					<div></div>
+					<img />
+					
+				</div>
+			</div>
+			<p>这是一个段落p</p>
+			<p>这个是会换行的</p>
+			<div>
+				<span>这是一个行内标签span</span>
+				<span>这是不会换行的</span>
+			</div>
+<pre>
+	这是一行 
+		这是第二行
+			这是第三行
+</pre>
+			<h3>页面切换</h3>
+			<div>
+				<a href="../b.html?m=a">A</a>
+				<a href="index.html?m=b">B</a>
+				<a href="index.html?m=c">C</a>
+			</div>
+			<h3>html注释</h3>
+			<!-- 在此处写注释 -->
+			<div>
+				&lt;!-- 在此处写注释 --&gt;
+			</div>
+			
+			<h3>标题</h3>
+			<div>
+				<h1>h1</h1>
+				<h2>h2</h2>
+				<h3>h3</h3>
+				<h4>h4</h4>
+			</div>
+			<h3>列表</h3>
+			<div>
+				<div>无序列表</div>
+				<ul>
+				  <li>咖啡</li>
+				  <li>茶</li>
+				  <li>牛奶</li>
+				</ul>
+				<div>有序列表</div>
+				<ol>
+				  <li>咖啡</li>
+				  <li>牛奶</li>
+				  <li>茶</li>
+				</ol>
+				<div>定义列表</div>
+				<dl>
+				   <dt>计算机</dt>
+				   <dd>用来计算的仪器 ... ...</dd>
+				   <dt>显示器</dt>
+				   <dd>以视觉方式显示信息的装置 ... ...</dd>
+				</dl>
+				<div>
+					<div>计算机</div>
+					<div style="margin-left: 60px;">用来计算的仪器 ... ...</div>
+					<text></text>
+				</div>
+			</div>
+			 
+			<h3>表格</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>这是表头</th>
+						<th>这是第二列</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>这是第一列</td>
+						<td>这是第二列</td>
+					</tr>
+				</tbody>
+			</table>
+			<h3>媒体</h3>
+			<div>
+				<img src="http://www.w3school.com.cn/i/eg_cute.gif" alt="图片不存在" />
+				<audio src="http://www.w3school.com.cn/i/horse.mp3" controls="controls"></audio>
+				<video controls="controls" src="http://www.w3school.com.cn/i/movie.ogg"></video>
+			</div>
+			<h3>表单</h3>
+			<form>
+				<div class="mgb-10">
+					<input type="text" id="title" name="title" value="" placeholder="这是单行文本框" />
+					<input type="hidden" />
+				</div>
+				<div class="mgb-10">
+					<textarea name="title" value="" placeholder="这是文本框" >这是多行文本</textarea>  
+				</div>
+				<div  class="mgb-10">
+					<input type="radio"  class="gender" name="gender" value="1" />男
+					<input type="radio" checked name="gender" value="1" />女
+				</div>
+				<div  class="mgb-10">
+					<input type="checkbox" name="techang[]" value="1" /> 音乐
+					<input type="checkbox" checked name="techang[]" value="1" /> 美术
+				</div>
+				<div class="mgb-10">
+					<select name="select">
+						<option value="0">这是列表选择框</option>
+						<option value="0" selected="selected">选项一</option>
+						<option value="0">选项二</option>
+					</select>
+				</div>
+				<div class="mgb-10">
+					<input type="file" name="file" />
+					这是文件上传
+				</div>
+				<div class="mgb-10">
+					<button type="submit">提交</button>
+					<button type="reset">重设</button>
+					<button type="button">按钮</button>
+				</div>
+			</form>
+			
+		</div>
+		<div style="height: 100px;"></div>
+	</body>
+</html>

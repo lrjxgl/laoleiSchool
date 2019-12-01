@@ -19,6 +19,14 @@
 		},
 		{
 			"path":"pages/index/touch"
+		},{
+			"path":"pages/websocket/index","style":{
+				"navigationBarTitleText":"老雷uniApp教程之websocket"
+			}
+		},{
+			"path":"pages/websocket/two","style":{
+				"navigationBarTitleText":"老雷uniApp教程之websocket"
+			}
 		}
 	],
 	

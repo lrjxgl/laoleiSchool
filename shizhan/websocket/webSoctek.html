@@ -30,18 +30,35 @@
       *3：连接已关闭或无法打开
       */
     //创建一个webSocket 实例
-    var webSocket  = new  WebSocket("ws://127.0.0.1:8000");
- 
- 
+    var webSocket  = new  WebSocket("ws://127.0.0.1:9000");
+	var ws=new WebSocket("wss://wss.deituicms.com:8282");
+	ws.onopen=function(e){
+		console.log(e);
+		setInterval(function(){
+				   var msg=JSON.stringify({
+					   "msg":"hihihi"
+				   })
+				   ws.send(msg);
+				   console.log("send")
+		},1000)
+	}
     webSocket.onerror = function (event){
        console.log(event);
+	   
     };
  
     // 打开websocket
     webSocket.onopen = function (event){
        console.log(event);
     };
- 
+	var it;
+	function ping(){
+		clearTimeout(it);
+		it=setTimeout(function(){
+			ws.send({type:"ping"});
+		},50000)
+	}
+	
     //监听消息
     webSocket.onmessage = function (event){
         onMessage(event);
@@ -64,6 +81,7 @@
     };
     
     function onMessage(event){
+		console.log(event.data);
 		var data=JSON.parse(event.data);
         document.getElementById("msg").innerHTML += "<p>"+data.msg+"</p>"
     };
@@ -87,7 +105,7 @@
 			msg:msg
 		}) 
         webSocket.send(json);
-     
+		ping();
     };
  
     

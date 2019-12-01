@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -60,6 +60,13 @@
 					"id": -1,
 					"name": "组件",
 					"pathName": "pages/index/component",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "udpsocket",
+					"pathName": "pages/udbsocket/index",
 					"query": "",
 					"scene": null
 				}

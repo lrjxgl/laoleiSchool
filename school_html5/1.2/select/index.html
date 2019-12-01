@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>css选择器</title>
+		<style>
+			/*通配符*/
+			*{
+				font-size: 16px;
+			}
+			/*类型选择符 div*/
+			h1{
+				color: #0F8E82;
+			}
+			/*id选择符 id*/
+			#a{
+				font-size: 22px;
+			}
+			/*类选择符 class*/
+			.a{color:red}
+			/*包含选择符*/
+			.a .ab{
+				color: #666;
+			}
+			/*子选择符*/
+			.a>.b{
+				color: #333;
+			}
+			/*相邻选择符*/
+			.a+.b{
+				background-color: #0F8E82;
+			}
+			/*兄弟选择符*/
+			.a~.d{
+				background-color: red;
+			}
+			/*属性选择符*/
+			.a[title]{
+				font-style: italic;
+			}
+			.a[v="aa"]{
+				font-style: italic;
+			}
+			/*伪类选择符*/
+			.linka:link {
+				text-decoration: none;
+				color: #333;
+			}
+			.linkb:visited {
+				text-decoration: none;
+				font-size: 22px;
+				color: #f30;
+			}
+			.linkb:hover {
+				text-decoration: none;
+			}
+			.linkb:active {
+				text-decoration: none;
+				color: #333;
+			}
+			.focus:focus{
+				border:1px solid #0F8E82;
+				color: red;
+				outline: none;
+			}
+			.check:checked+span{
+				color: red;
+			}
+			.input:enabled{
+				color: #333;
+			}
+			.input:disabled{
+				color: #f60;
+			}
+			/**伪类子集**/
+			p:first-child{color:#f00;}
+			p:last-child{color:#666;}
+			/* 偶数 */
+			li:nth-child(2n){color:#f00;} 
+			/* 奇数 */
+			li:nth-child(2n+1){color:#000;} 
+			/***伪对象选择符***/
+			.float:after{
+				content:"伪对象符"
+			}
+			.float:before{
+				content: "这是";
+			}
+		</style>
+	</head>
+	<body>
+		<h1>H1</h1>
+		<div id="a">A</div>
+		<div class="a">
+			<span >A</span>
+			<span class="b">.a>.b</span>
+			<span>
+				<span class="b">.a>.b</span>
+				<span class="ab">.a .ab</span>
+			</span>
+		</div>
+		<div class="b">.a+.b</div>
+		<div class="b">.a+.b</div>
+		<div class="d">.a~.d</div>
+		<div class="d">.a~.d</div>
+		
+		<div class="a" title="斜的">斜的</div>
+		<div class="a" v="aa">aa</div>
+		<div class="a" v="bb">bb</div>
+		<div>
+			<a href="" class="link">链接</a>
+			<a href="" class="linka">链接a</a>
+			<a href="o.html" class="linkb">链接b</a>
+			<input type="text" class="focus" value="focus" />
+		</div>
+		<div>
+			<input type="radio" checked class="check" /><span>选中</span>
+			<input type="radio"  class="check" /><span>未选中</span>
+		</div>
+		<div>
+			<input class="input" value="不可修改" type="text" disabled="disabled" />
+			<input class="input" value="可修改" type="text"/>
+		</div>
+		<div>
+			<p>first-child</p>
+			<p>last-child</p>
+		</div>
+		<ul>
+			<li>列表项一</li>
+			<li>列表项二</li>
+			<li>列表项三</li>
+			<li>列表项四</li>
+		</ul>
+		<div class="float"></div>
+	</body>
+</html>
